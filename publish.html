@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Publish</title>
+    <!-- Tailwind CSS CDN for modern styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Roboto -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom CSS for Roboto font and base colors */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #ffffff; /* White background */
+            color: #000000; /* Black text */
+        }
+        /* Active navigation link styling */
+        .nav-link.active {
+            font-weight: 700; /* Bold for active link */
+            color: #000000; /* Ensure black for active link */
+            border-bottom: 2px solid #000000; /* Underline for active link */
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+    <!-- Navigation Bar -->
+    <nav class="bg-white p-4 shadow-sm">
+        <div class="container mx-auto flex justify-center space-x-8">
+            <a href="index.html" class="nav-link text-lg px-3 py-2 rounded-md transition-colors duration-200 ease-in-out hover:bg-gray-100">Profile</a>
+            <a href="publish.html" class="nav-link active text-lg px-3 py-2 rounded-md transition-colors duration-200 ease-in-out hover:bg-gray-100">Publish</a>
+            <a href="roadmap.html" class="nav-link text-lg px-3 py-2 rounded-md transition-colors duration-200 ease-in-out hover:bg-gray-100">Roadmap</a>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow container mx-auto p-6 md:p-8 lg:p-10">
+        <div class="bg-white rounded-lg shadow-md p-6 md:p-8 lg:p-10 mb-6 text-center">
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">My Publications & Projects</h1>
+            <p class="text-lg text-gray-700">
+                Here you'll find a collection of my articles, blog posts, and featured projects.
+            </p>
+        </div>
+
+        <!-- Publication/Project List -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Example Publication/Project Card 1 -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-xl md:text-2xl font-bold mb-2">How to Build a Responsive Navbar with Tailwind CSS</h2>
+                <p class="text-gray-600 text-sm mb-3">Published on: July 20, 2025</p>
+                <p class="text-base leading-relaxed mb-4">
+                    A step-by-step guide on creating a flexible and responsive navigation bar using Tailwind CSS utility classes.
+                    Covers basic structure, mobile-first approach, and dynamic toggling.
+                </p>
+                <a href="https://github.com/yourusername/your-project-repo-navbar" target="_blank" class="inline-block bg-black text-white px-4 py-2 rounded-md shadow-md hover:bg-gray-800 transition-colors duration-200 ease-in-out text-sm">View Project / Article</a>
+            </div>
+
+            <!-- Example Publication/Project Card 2 -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-xl md:text-2xl font-bold mb-2">Understanding JavaScript Closures for Beginners</h2>
+                <p class="text-gray-600 text-sm mb-3">Published on: June 15, 2025</p>
+                <p class="text-base leading-relaxed mb-4">
+                    An in-depth look into JavaScript closures, explaining what they are, how they work,
+                    and practical examples of their use in modern web development.
+                </p>
+                <a href="https://github.com/yourusername/your-project-repo-closures" target="_blank" class="inline-block bg-black text-white px-4 py-2 rounded-md shadow-md hover:bg-gray-800 transition-colors duration-200 ease-in-out text-sm">View Project / Article</a>
+            </div>
+
+            <!-- Example Publication/Project Card 3 -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-xl md:text-2xl font-bold mb-2">My Open Source Contribution: Project X</h2>
+                <p class="text-gray-600 text-sm mb-3">Contributed on: May 10, 2025</p>
+                <p class="text-base leading-relaxed mb-4">
+                    Details about a significant contribution made to an open-source project,
+                    highlighting the problem solved and the impact of the changes.
+                </p>
+                <a href="https://github.com/yourusername/your-project-repo-opensource" target="_blank" class="inline-block bg-black text-white px-4 py-2 rounded-md shadow-md hover:bg-gray-800 transition-colors duration-200 ease-in-out text-sm">View Contribution</a>
+            </div>
+
+            <!-- Add more publication/project cards as needed -->
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white p-4 text-center text-sm text-gray-600 border-t border-gray-100 mt-6">
+        &copy; 2025 [Your Name]. All rights reserved.
+    </footer>
+</body>
+</html>
