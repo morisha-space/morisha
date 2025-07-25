@@ -1,16 +1,23 @@
+```html
 <!DOCTYPE html>
 <html lang="my">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Morisha | Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     :root {
-      --bg-color: #f9fafb;
-      --text-color: #111827;
-      --accent-color: #6366f1;
-      --tab-bg: #e0e7ff;
+      --bg-color: #f4f7fa; /* Lighter background */
+      --card-bg: #ffffff;
+      --text-color: #212529; /* Darker, more prominent text */
+      --secondary-text-color: #6c757d;
+      --accent-color: #007bff; /* Primary blue accent */
+      --accent-light: #e7f3ff; /* Lighter shade of accent */
+      --border-color: #dee2e6;
+      --shadow-light: rgba(0, 0, 0, 0.08);
+      --shadow-medium: rgba(0, 0, 0, 0.12);
     }
 
     body {
@@ -19,65 +26,82 @@
       color: var(--text-color);
       margin: 0;
       padding: 0;
+      line-height: 1.6;
     }
 
     .container {
-      max-width: 960px;
+      max-width: 1000px;
       margin: 40px auto;
-      background: white;
-      border-radius: 16px;
-      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.05);
-      padding: 2rem;
+      background: var(--card-bg);
+      border-radius: 20px;
+      box-shadow: 0 10px 30px var(--shadow-light);
+      padding: 2.5rem;
+      overflow: hidden; /* For rounded corners */
     }
 
     header {
       text-align: center;
-      border-bottom: 1px solid #e5e7eb;
-      padding-bottom: 1.5rem;
-      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+      margin-bottom: 2.5rem;
+      position: relative;
     }
 
     header h1 {
-      font-size: 2rem;
-      font-weight: 700;
+      font-size: 2.8rem;
+      font-weight: 800;
       margin: 0;
       color: var(--accent-color);
+      letter-spacing: -0.03em;
     }
 
     header h2 {
-      font-size: 1.1rem;
-      color: #6b7280;
-      margin-top: 0.5rem;
+      font-size: 1.25rem;
+      color: var(--secondary-text-color);
+      margin-top: 0.75rem;
+      font-weight: 400;
     }
 
     nav.tabs {
       display: flex;
       justify-content: center;
-      gap: 1rem;
-      margin-bottom: 2rem;
+      gap: 1.2rem;
+      margin-bottom: 3rem;
       flex-wrap: wrap;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 0.5rem;
     }
 
     .tab-button {
-      padding: 0.75rem 1.25rem;
-      font-size: 1rem;
+      padding: 0.9rem 1.7rem;
+      font-size: 1.05rem;
       border: none;
-      border-radius: 999px;
-      background: #f3f4f6;
-      color: #374151;
+      border-radius: 30px;
+      background: var(--bg-color);
+      color: var(--secondary-text-color);
       cursor: pointer;
-      transition: 0.3s ease;
+      transition: all 0.3s ease;
+      font-weight: 500;
+      min-width: 120px;
+      text-align: center;
+    }
+
+    .tab-button:hover {
+      background: var(--accent-light);
+      color: var(--accent-color);
     }
 
     .tab-button.active {
-      background: var(--tab-bg);
-      color: var(--accent-color);
+      background: var(--accent-color);
+      color: var(--card-bg);
       font-weight: 600;
+      box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+      transform: translateY(-2px);
     }
 
     .tab-content {
       display: none;
-      animation: fadeIn 0.5s ease;
+      animation: fadeIn 0.6s ease-out;
+      padding-top: 1rem;
     }
 
     .tab-content.active {
@@ -85,58 +109,285 @@
     }
 
     h3 {
-      border-left: 4px solid var(--accent-color);
-      padding-left: 0.75rem;
-      margin-top: 2rem;
-      margin-bottom: 1rem;
-      font-size: 1.2rem;
+      border-left: 5px solid var(--accent-color);
+      padding-left: 1rem;
+      margin-top: 2.5rem;
+      margin-bottom: 1.5rem;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--text-color);
+      line-height: 1.3;
     }
 
     section {
-      margin-bottom: 2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      color: var(--secondary-text-color);
+      font-size: 1rem;
     }
 
     ul {
-      list-style: disc;
-      padding-left: 1.25rem;
+      list-style: none; /* Remove default list style */
+      padding-left: 0;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+      position: relative;
+      padding-left: 1.5rem;
+      color: var(--secondary-text-color);
+    }
+
+    li::before {
+      content: "•"; /* Custom bullet point */
+      color: var(--accent-color);
+      position: absolute;
+      left: 0;
+      font-size: 1.2em;
+      line-height: 1;
     }
 
     .milestone-item, .roadmap-item {
-      background: #f9fafb;
-      border-left: 4px solid var(--accent-color);
-      border-radius: 8px;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      transition: background 0.3s ease;
+      background: var(--bg-color);
+      border-left: 5px solid var(--accent-light);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1.2rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px var(--shadow-light);
     }
 
     .milestone-item:hover, .roadmap-item:hover {
-      background: #f3f4f6;
+      background: #e9ecef;
+      border-left-color: var(--accent-color);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px var(--shadow-medium);
     }
 
     .milestone-date, .roadmap-date {
-      font-weight: 600;
+      font-weight: 700;
       color: var(--accent-color);
+      margin-bottom: 0.75rem;
+      font-size: 1.1rem;
+    }
+
+    .milestone-description, .roadmap-description {
+      color: var(--text-color);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .milestone-description p, .roadmap-description p {
       margin-bottom: 0.5rem;
+      color: var(--text-color);
     }
 
     footer {
       text-align: center;
-      margin-top: 3rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid #e5e7eb;
-      color: #9ca3af;
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border-color);
+      color: var(--secondary-text-color);
       font-size: 0.9rem;
     }
 
     a {
       color: var(--accent-color);
       text-decoration: none;
+      transition: color 0.3s ease;
     }
 
+    a:hover {
+      color: #0056b3; /* Darker blue on hover */
+      text-decoration: underline;
+    }
+
+    /* New Elements Styling */
+    .hero-section {
+      background: linear-gradient(135deg, var(--accent-color) 0%, #4facfe 100%);
+      color: white;
+      padding: 3rem 2.5rem;
+      border-radius: 15px;
+      margin-bottom: 2.5rem;
+      text-align: center;
+      box-shadow: 0 8px 25px rgba(0, 123, 255, 0.4);
+    }
+
+    .hero-section h2 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: white;
+    }
+
+    .hero-section p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      max-width: 700px;
+      margin: 0 auto;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .skills-section {
+      margin-top: 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .skill-tag {
+      background: var(--accent-light);
+      color: var(--accent-color);
+      padding: 0.6rem 1.2rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: background 0.3s ease;
+    }
+
+    .skill-tag:hover {
+      background: var(--accent-color);
+      color: var(--card-bg);
+    }
+
+    .contact-info p {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.8rem;
+    }
+
+    .contact-info .icon {
+      margin-right: 10px;
+      color: var(--accent-color);
+      font-size: 1.1em;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .social-links a {
+      font-size: 1.8rem;
+      color: var(--secondary-text-color);
+      transition: color 0.3s ease;
+    }
+
+    .social-links a:hover {
+      color: var(--accent-color);
+    }
+
+    /* Animations */
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
+      from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .container {
+        margin: 20px auto;
+        padding: 1.5rem;
+        border-radius: 15px;
+      }
+
+      header h1 {
+        font-size: 2.2rem;
+      }
+
+      header h2 {
+        font-size: 1rem;
+      }
+
+      nav.tabs {
+        flex-direction: column;
+        gap: 0.8rem;
+        align-items: center;
+      }
+
+      .tab-button {
+        width: 80%;
+        max-width: 250px;
+        padding: 0.7rem 1rem;
+        font-size: 0.95rem;
+      }
+
+      h3 {
+        font-size: 1.5rem;
+        padding-left: 0.8rem;
+      }
+
+      .milestone-item, .roadmap-item {
+        padding: 1.2rem;
+        border-radius: 10px;
+      }
+
+      .hero-section {
+        padding: 2rem 1.5rem;
+      }
+
+      .hero-section h2 {
+        font-size: 1.8rem;
+      }
+
+      .hero-section p {
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        margin: 15px;
+        padding: 1rem;
+        border-radius: 10px;
+      }
+
+      header h1 {
+        font-size: 1.8rem;
+      }
+
+      header h2 {
+        font-size: 0.9rem;
+      }
+
+      .tab-button {
+        width: 90%;
+        font-size: 0.9rem;
+      }
+
+      h3 {
+        font-size: 1.3rem;
+        padding-left: 0.6rem;
+      }
+
+      .milestone-item, .roadmap-item {
+        padding: 1rem;
+      }
+
+      .milestone-date, .roadmap-date {
+        font-size: 1rem;
+      }
+
+      .milestone-description, .roadmap-description {
+        font-size: 0.9rem;
+      }
+
+      .social-links {
+        gap: 1rem;
+      }
+
+      .social-links a {
+        font-size: 1.5rem;
+      }
     }
   </style>
 </head>
@@ -154,616 +405,659 @@
     </nav>
 
     <div id="profile" class="tab-content active">
+      <section class="hero-section">
+        <h2>မာယာပညာအနှစ်ချုပ်</h2>
+        <p>
+         ပန်းဆက်လမ်းစာအုပ်တိုက်ကနေ Robert Greene ရဲ့ Concise Art of Seduction ဘာသာပြန် မာယာပညာအနှစ်ချုပ် ထွက်ပါတော့မယ်ခင်ဗျ။ 
+         ပန်းဆက်လမ်းစာအုပ်တိုက်ရဲ့ Official Facebook ကနေတဆင့်သော်လည်းကောင်း၊ 
+         Official Website ကနေတဆင့်သော်လည်းကောင်း 
+         Pre-order လက်ခံနေပါပြီခင်ဗျ။ Giveaway တွေလည်း ပေးနေပါတယ်နော်။ 
+         ကံကောင်းကြပါစေခင်ဗျ။
+        </p>
+      </section>
+
       <section>
-        <!-- Full Profile content inserted here -->
-           <p>
-                    ပန်းဆက်လမ်းစာပေ အရောင်းရဆုံးစာရင်းဝင် အိတ်ဆောင် အာဏာစက် နည်းဥပဒေသ (၄၈) ရပ်၊ 
-                    လူ့သဘောလူ့မနော အနှစ်ချုပ်၊ ဆွန်ဇူး၏ စစ်ပညာကျမ်းနဲ့ တည့်တည့်တွေး စတဲ့ Nation Wide Best Selling 
-                    စာအုပ်တွေရဲ့ ဘာသာပြန်စာရေးသူဖြစ်ပါတယ်။  
-                </p>
-                <p>
-ကြွက်နှစ်မှာမွေးတဲ့၊ ပြိဿရာသီဖွား ရှမ်းပြည်မြောက်ပိုင်းသားပါ။ စိတ်ဝင်စားသလို ဝါသနာပါတဲ့ 
-စိတ်ပညာ၊ ဘာသာဗေဒ၊ ဒဿနိက၊ လူမှုဗေဒ၊ ကိုးကွယ်မှု အလေ့အထ၊ ဂီတအနုသုခုမနဲ့အတူ 
-နိုင်ငံရေးသိပ္ပံပညာရပ်တွေကို ဆက်လက်လေ့လာနေဆဲဖြစ်ပြီး၊ ဘာသာပြန်ဆို ရေးသားပြုစုလျက်ရှိပါတယ်။                </p>
+        <h3>About Me</h3>
+        <p>
+          ပန်းဆက်လမ်းစာပေ အရောင်းရဆုံးစာရင်းဝင် အိတ်ဆောင် အာဏာစက် နည်းဥပဒေသ (၄၈) ရပ်၊
+          လူ့သဘောလူ့မနော အနှစ်ချုပ်၊ ဆွန်ဇူး၏ စစ်ပညာကျမ်းနဲ့ တည့်တည့်တွေး စတဲ့ Nation Wide Best Selling
+          စာအုပ်တွေရဲ့ ဘာသာပြန်စာရေးသူဖြစ်ပါတယ်။
+        </p>
+        <p>
+          ကြွက်နှစ်မှာမွေးတဲ့၊ ပြိဿရာသီဖွား ရှမ်းပြည်မြောက်ပိုင်းသားပါ။ စိတ်ဝင်စားသလို ဝါသနာပါတဲ့
+          စိတ်ပညာ၊ ဘာသာဗေဒ၊ ဒဿနိက၊ လူမှုဗေဒ၊ ကိုးကွယ်မှု အလေ့အထ၊ ဂီတအနုသုခုမနဲ့အတူ
+          နိုင်ငံရေးသိပ္ပံပညာရပ်တွေကို ဆက်လက်လေ့လာနေဆဲဖြစ်ပြီး၊ ဘာသာပြန်ဆို ရေးသားပြုစုလျက်ရှိပါတယ်။
+        </p>
+        <p>အမည်ရင်းကတော့ ဦးအောင်လင်းရှိန် (ခ) တည်ငြိမ်ဦးဖြစ်ပြီး၊ မြန်မာနိုင်ငံ၊ ရှမ်းပြည်နယ်မြောက်ပိုင်း၊ ကျောက်မဲမြို့၌ ဖွားမြင်ခဲ့ပါတယ်။ မွေးချင်းညီအစ်ကို လေးယောက်အနက် နို့ညာဖြစ်ပါတယ်။</p>
+        <p>
+          Stamford International University မှ Bachelor of Business Administration in Marketing ရရှိခဲ့ပြီး၊
+          ဈေးကွက်ဖြန့်ချိရေးဆိုင်ရာ အလွတ်တန်း စီမံခန့်ခွဲရေးအရာရှိ (Freelance Marketing Manager) အဖြစ် ၂၀၁၀ ခုနှစ်မှ ယနေ့တိုင် လုပ်ကိုင်လျက် ရှိပါတယ်။
+          ချင်းမိုင်တက္ကသိုလ်မှ Advanced Diploma in Child Psychology (ADCP) ရရှိခဲ့ပြီး၊
+          မန္တလေး၊ မြင်းခြံ၊ ပခုက္ကူနှင့် မကွေးမြို့များရှိ ပုဂ္ဂလိကကျောင်း၊ ကိုယ်ပိုင်ကျောင်းများအတွက် ကျောင်းပညာရေးဆိုင်ရာ အကြံပေးအရာရှိ
+          (Educational Psychologist) အဖြစ် ၂၀၁၂ ခုနှစ်မှ ၂၀၁၆ ခုနှစ်အတွင်း လုပ်ကိုင်ခဲ့ပါတယ်။
+        </p>
+        <p>၂၀၁၂ ခုနှစ်မှ ၂၀၁၄ ခုနှစ်အတွင်း “ဦးအောင်” ကလောင်ဖြင့် အတွေးအမြင်မဂ္ဂဇင်းတွင် သုတဆောင်းပါးတိုများ ရေးသားခဲ့ပြီး မြန်မာစာပေနယ်သို့ ဝင်ရောက်နိုင်ခဲ့ပါတယ်။
+          ၂၀၀၉ ခုနှစ်တွင် Morisha အမည်ဖြင့် Reader Digest Asia (Singapore) တွင် “The Little One” ဆိုသည့် Short Stories စတင်ဖော်ပြခံရပြီး နိုင်ငံတကာစာပေနယ်သို့ ဝင်ရောက်နိုင်ခဲ့ပါတယ်။
+          အိမ်အတွင်းရေး ပဋိပက္ခများနှင့် ကျန်းမာရေးပြဿနာများကြောင့် ၂၀၁၇ ခုနှစ်နောက်ပိုင်း စာပေလက်ရာတခုမှ ရေးသားနိုင်ခြင်းမရှိတော့ဘဲ၊ 
+          ပုဂ္ဂလိက ပညာရေးလုပ်ငန်းများတွင် ပညာရေးဆိုင်ရာ အကြံပေးအရာရှိ အချိန်ပြည့်ဝန်ထမ်းအဖြစ် ၂၀၂၀ ခုနှစ်အထိ လုပ်ကိုင်ခဲ့ပါတယ်။</p>
+        <p>
+          မဟာဂန္ဓာရီမဟာဂမ္ဘီရစာပေလက်ရာဆန်းများကို "ဧရုမံ" "Eruman" ကလောင်၊
+          ပေါ့ပေါ့ပါးပါး တက်ကျမ်းစာပေအမျိုးအစားဝင် လက်ရာဆန်းများကို "လူသာ(အတွေးအမြင်)" "Luther's Reflection" ကလောင်၊
+          ကိုယ်ပိုင် ရသစာပေလက်ရာများ ရေးသားထုတ်ဝေရန်အတွက် "Dominik Willow" "ဒိုမဏိခ်မိုးမခ" ကလောင်နှင့်အတူ
+          ကိုးကွယ်မှုအလေ့အထ ဘာသာတရားများဆိုင်ရာ ခေတ်ဟောင်း-ခေတ်ပြိုင်ကျမ်းစာများကို ဘာသာပြန်ဆိုရေးသားထုတ်ဝေသွားရန်အတွက်
+          "အာဒိတြ" "Āditra" ကလောင်ခွဲများနှင့်လည်း အခါအားလျော်စွာ ရေးသားထုတ်ဝေလျက်ရှိပါတယ်။
+        </p>
+        <p> အခုလက်ရှိမှာတော့ ကြောင်မလေးနှစ်ကောင်ပိုင်ရှင် ဘဝလက်တွဲဖော်နဲ့အတူ နယ်မြို့လေးတခုမှာ ကျန်းမာစွာ နေထိုင်လျက်ရှိပြီး စိတ်ဝင်စားတဲ့ "ဆရာကြီး" အလုပ်လုပ်နေရင်း စာပေအလုပ်တွေကို နေ့ညမပြတ် ဆက်လုပ်နေပါတယ်။</p>
+      </section>
 
-<p>အမည်ရင်းကတော့ ဦးအောင်လင်းရှိန် (ခ) တည်ငြိမ်ဦးဖြစ်ပြီး၊ မြန်မာနိုင်ငံ၊ ရှမ်းပြည်နယ်မြောက်ပိုင်း၊ ကျောက်မဲမြို့၌ ဖွားမြင်ခဲ့ပါတယ်။ မွေးချင်းညီအစ်ကို လေးယောက်အနက် နို့ညာဖြစ်ပါတယ်။</p>
-<p> 
+      <section class="skills-section">
+        <h3>Skills & Interests</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Translation</span>
+          <span class="skill-tag">Writing</span>
+          <span class="skill-tag">Psychology</span>
+          <span class="skill-tag">Linguistics</span>
+          <span class="skill-tag">Philosophy</span>
+          <span class="skill-tag">Sociology</span>
+          <span class="skill-tag">Religious Studies</span>
+          <span class="skill-tag">Music & Arts</span>
+          <span class="skill-tag">Political Science</span>
+          <span class="skill-tag">Marketing Management</span>
+          <span class="skill-tag">Educational Psychology</span>
+        </div>
+      </section>
 
-Stamford International University မှ Bachelor of Business Administration in Marketing ရရှိခဲ့ပြီး၊ 
-ဈေးကွက်ဖြန့်ချိရေးဆိုင်ရာ အလွတ်တန်း စီမံခန့်ခွဲရေးအရာရှိ (Freelance Marketing Manager) အဖြစ် ၂၀၁၀ ခုနှစ်မှ ယနေ့တိုင် လုပ်ကိုင်လျက် ရှိပါတယ်။
-ချင်းမိုင်တက္ကသိုလ်မှ Advanced Diploma in Child Psychology (ADCP) ရရှိခဲ့ပြီး၊ 
-မန္တလေး၊ မြင်းခြံ၊ ပခုက္ကူနှင့် မကွေးမြို့များရှိ ပုဂ္ဂလိကကျောင်း၊ ကိုယ်ပိုင်ကျောင်းများအတွက် ကျောင်းပညာရေးဆိုင်ရာ အကြံပေးအရာရှိ 
-(Educational Psychologist) အဖြစ် ၂၀၁၂ ခုနှစ်မှ ၂၀၁၆ ခုနှစ်အတွင်း လုပ်ကိုင်ခဲ့ပါတယ်။
+      <section>
+        <h3>Recent Updates</h3>
+        <ul>
+          <li>July 16, 2025 တွင် ပန်းဆက်လမ်းစာအုပ်တိုက်က Facebook ကနေတဆင့် "မာယာပညာ" အနှစ်ချုပ် စာအုပ်အတွက် Pre-order စတင်လက်ခံပြီး၊ July 28, 2025 တွင် စာအုပ်ထွက်ရှိမည်ဟု ကြေညာထားပါတယ်။
+            စာအုပ်တန်ဖိုးကတော့ မြန်မာကျပ်ငွေ (၁၄,၀၀၀) ကျပ်ဖြစ်ပြီး၊ စာမျက်နှာပေါင်း (၂၇၁) မျက်နှာရှိပါတယ်။ </li>
+          <li>July 8, 2025 တွင် စာရိပ်မြိုင်စာပေက ဧရုမံ ကလောင်ရဲ့ ပထမဆုံးသော သနန္တနဓမ္မဆိုင်ရာ ဘာသာပြန်လက်ရာ "သိရီဂဏပတိ-မဟာပိန္နဲအရှင်၏မဟာဝင်" စာအုပ်ကို တရားဝင် ထုတ်ဝေဖြန်ချိကြောင်း ကြေညာထားပါတယ်။
+            စာမျက်နှာပေါင်း (၂၀၈) မျက်နှာရှိပြီး၊ စာအုပ်တန်ဖိုး (၁၃,၅၀၀) ကျပ်ဖြစ်ပါတယ်။ </li>
+          <li>June 9, 2025 တွင် Surrounded by Series ကို ဘာသာပြန်ဆိုဖို့ ပန်းဆက်လမ်းစာအုပ်တိုက်နဲ့ သဘောတူညီချက် ရရှိခဲ့တာကြောင့် မောရိသျှ ကလောင်နဲ့ ထုတ်ဝေဖြန့်ချိသွားပါမယ်။</li>
+          <li>June 6, 2025 တွင် Founder vs Investor ရင်းနှီးမြှုပ်နှံမှုဆိုင်ရာ လမ်းပြစာအုပ်ကို "တည်ထောင်သူနဲ့ ရင်းနှီးမြှုပ်နှံသူ" အမည်နဲ့ ဘာသာပြန်ဆိုမှု လုပ်ငန်းစတင်ပါတယ်။ </li>
+          <li>January 4, 2025 တွင် Stephen Batchelor ရဲ့ Confession of a Buddhist Atheist စာအုပ်ကို "ယုံကြည်မှုရှင်းတမ်း" အမည်နဲ့ ဘာသာပြန်ဆိုမှု လုပ်ငန်းစတင်ပါတယ်။ </li>
+        </ul>
+      </section>
 
-<p>၂၀၁၂ ခုနှစ်မှ ၂၀၁၄ ခုနှစ်အတွင်း “ဦးအောင်” ကလောင်ဖြင့် အတွေးအမြင်မဂ္ဂဇင်းတွင် သုတဆောင်းပါးတိုများ ရေးသားခဲ့ပြီး မြန်မာစာပေနယ်သို့ ဝင်ရောက်နိုင်ခဲ့ပါတယ်။
-၂၀၀၉ ခုနှစ်တွင် Morisha အမည်ဖြင့် Reader Digest Asia (Singapore) တွင် “The Little One” ဆိုသည့် Short Stories စတင်ဖော်ပြခံရပြီး နိုင်ငံတကာစာပေနယ်သို့ ဝင်ရောက်နိုင်ခဲ့ပါတယ်။
-အိမ်အတွင်းရေး ပဋိပက္ခများနှင့် ကျန်းမာရေးပြဿနာများကြောင့် ၂၀၁၇ ခုနှစ်နောက်ပိုင်း စာပေလက်ရာတခုမှ ရေးသားနိုင်ခြင်းမရှိတော့ဘဲ၊ ပုဂ္ဂလိက ပညာရေးလုပ်ငန်းများတွင် ပညာရေးဆိုင်ရာ အကြံပေးအရာရှိ အချိန်ပြည့်ဝန်ထမ်းအဖြစ် ၂၀၂၀ ခုနှစ်အထိ လုပ်ကိုင်ခဲ့ပါတယ်။</p>
-
-</p>
-           
-<p>
-                    မဟာဂန္ဓာရီမဟာဂမ္ဘီရစာပေလက်ရာဆန်းများကို "ဧရုမံ" "Eruman" ကလောင်၊ 
-                    ပေါ့ပေါ့ပါးပါး တက်ကျမ်းစာပေအမျိုးအစားဝင် လက်ရာဆန်းများကို "လူသာ(အတွေးအမြင်)" "Luther's Reflection" ကလောင်၊ 
-                    ကိုယ်ပိုင် ရသစာပေလက်ရာများ ရေးသားထုတ်ဝေရန်အတွက် "Dominik Willow" "ဒိုမဏိခ်မိုးမခ" ကလောင်နှင့်အတူ 
-                    ကိုးကွယ်မှုအလေ့အထ ဘာသာတရားများဆိုင်ရာ ခေတ်ဟောင်း-ခေတ်ပြိုင်ကျမ်းစာများကို ဘာသာပြန်ဆိုရေးသားထုတ်ဝေသွားရန်အတွက် 
-                    "အာဒိတြ" "Āditra" ကလောင်ခွဲများနှင့်လည်း အခါအားလျော်စွာ ရေးသားထုတ်ဝေလျက်ရှိပါတယ်။ 
-                </p>
-<p> အခုလက်ရှိမှာတော့ ကြောင်မလေးနှစ်ကောင်ပိုင်ရှင် ဘဝလက်တွဲဖော်နဲ့အတူ နယ်မြို့လေးတခုမှာ ကျန်းမာစွာ နေထိုင်လျက်ရှိပြီး စိတ်ဝင်စားတဲ့ "ဆရာကြီး" အလုပ်လုပ်နေရင်း စာပေအလုပ်တွေကို နေ့ညမပြတ် ဆက်လုပ်နေပါတယ်။</p>
-
-  <h3>Update</h3>
-  
-                    <li>July 16, 2025 တွင် ပန်းဆက်လမ်းစာအုပ်တိုက်က Facebook ကနေတဆင့် "မာယာပညာ" အနှစ်ချုပ် စာအုပ်အတွက် Pre-order စတင်လက်ခံပြီး၊ July 28, 2025 တွင် စာအုပ်ထွက်ရှိမည်ဟု ကြေညာထားပါတယ်။ 
-                        စာအုပ်တန်ဖိုးကတော့ မြန်မာကျပ်ငွေ (၁၄,၀၀၀) ကျပ်ဖြစ်ပြီး၊ စာမျက်နှာပေါင်း (၂၇၁) မျက်နှာရှိပါတယ်။ </li>
-                    <li>July 8, 2025 တွင် စာရိပ်မြိုင်စာပေက ဧရုမံ ကလောင်ရဲ့ ပထမဆုံးသော သနန္တနဓမ္မဆိုင်ရာ ဘာသာပြန်လက်ရာ "သိရီဂဏပတိ-မဟာပိန္နဲအရှင်၏မဟာဝင်" စာအုပ်ကို တရားဝင် ထုတ်ဝေဖြန်ချိကြောင်း ကြေညာထားပါတယ်။ 
-                        စာမျက်နှာပေါင်း (၂၀၈) မျက်နှာရှိပြီး၊ စာအုပ်တန်ဖိုး (၁၃,၅၀၀) ကျပ်ဖြစ်ပါတယ်။ </li>
-                    <li>June 9, 2025 တွင် Surrounded by Series ကို ဘာသာပြန်ဆိုဖို့ ပန်းဆက်လမ်းစာအုပ်တိုက်နဲ့ သဘောတူညီချက် ရရှိခဲ့တာကြောင့် မောရိသျှ ကလောင်နဲ့ ထုတ်ဝေဖြန့်ချိသွားပါမယ်။</li>
-                    <li>June 6, 2025 တွင် Founder vs Investor ရင်းနှီးမြှုပ်နှံမှုဆိုင်ရာ လမ်းပြစာအုပ်ကို "တည်ထောင်သူနဲ့ ရင်းနှီးမြှုပ်နှံသူ" အမည်နဲ့ ဘာသာပြန်ဆိုမှု လုပ်ငန်းစတင်ပါတယ်။ </li>
-                    <li>January 4, 2025 တွင် Stephen Batchelor ရဲ့ Confession of a Buddhist Atheist စာအုပ်ကို "ယုံကြည်မှုရှင်းတမ်း" အမည်နဲ့ ဘာသာပြန်ဆိုမှု လုပ်ငန်းစတင်ပါတယ်။ </li>
-
-  <h3>Contact Information</h3>
-                <p>Email: <a href="morisha.alynn@gmail.com" style="color: #555; text-decoration: none;">morisha.alynn@gmail.com</a></p>
-                <p>LinkedIn: <a href="https://www.linkedin.com/in/morisha-alynn" target="_blank" style="color: #555; text-decoration: none;">linkedin.com/in/morisha-alynn</a></p>
-                <p>Facebook: <a href="https://facebook.com/morisha.alynn" target="_blank" style="color: #555; text-decoration: none;">facebook.com/</a>morisha.alynn</p>
-                <p>Telegram: <a href="https://t.me/morisha_alynn" target="_blank" style="color: #555; text-decoration: none;">telegram/</a>morisha_alynn</p>
+      <section class="contact-info">
+        <h3>Contact Information</h3>
+        <p><i class="fas fa-envelope icon"></i> Email: <a href="mailto:morisha.alynn@gmail.com">morisha.alynn@gmail.com</a></p>
+        <p><i class="fab fa-linkedin icon"></i> LinkedIn: <a href="https://www.linkedin.com/in/morisha-alynn" target="_blank">linkedin.com/in/morisha-alynn</a></p>
+        <p><i class="fab fa-facebook-f icon"></i> Facebook: <a href="https://facebook.com/morisha.alynn" target="_blank">facebook.com/morisha.alynn</a></p>
+        <p><i class="fab fa-telegram-plane icon"></i> Telegram: <a href="https://t.me/morisha_alynn" target="_blank">t.me/morisha_alynn</a></p>
       </section>
     </div>
 
     <div id="milestones" class="tab-content">
       <section>
-        <!-- Full Milestones content inserted here -->
+        <h3>2025 Milestones</h3>
+        <div class="milestone-item">
+          <div class="milestone-date">July 16, 2025</div>
+          <div class="milestone-description">
+            **Founder vs Investor**
+            by Elizabeth Zalman and Jerry Neumann - တို့ရဲ့ စွန့်စားစီးပွား ရင်းနှီးမြှုပ်နှံမှုဆိုင်ရာ စီမံခန့်ခွဲမှုလမ်းပြစာအုပ်ကို
+            "တည်ထောင်သူနဲ့ ရင်းနှီးမြှုပ်နှံသူ" အမည်နဲ့ မြန်မာဘာသာသို့ ဘာသာပြန်ဆိုပြီးစီးခဲ့ပါတယ်။
+            အချိန်အများကြီး မယူလိုက်ရပေမဲ့၊ ဘာသာပြန်ဆိုခဲ့သမျှ စာအုပ်တွေထဲက စာမျက်နှာအများဆုံးဖြစ်သလို ရင်းနှီးကျွမ်းဝင်မှု အားနည်းတဲ့
+            နယ်ပယ်ဖြစ်တာကြောင့် ဉာဏအား တော်တော်လေး စိုက်ထုတ်လိုက်ရတယ်။
+          </div>
+        </div>
+        <div class="milestone-item">
+          <div class="milestone-date">May 21, 2025</div>
+          <div class="milestone-description">
+            **သိရီဂဏပတိ** မဟာပိန္နဲအရှင်၏ မဟာဝင် စာအုပ် ဘာသာပြန်ဆိုမှု ပြီးစီးအောင်မြင်ခဲ့ပါတယ်။ အောင်မြင်မှု မှတ်ကျောက်တိုင်တခုပါပဲ။
+            ပေါ့ပေါ့ပါးပါးပဲ ရေးဖို့ တွေးခဲ့ပေမဲ့၊ တကယ်လုပ်ဖြစ်တော့မှ တလက်စတည်း ပြည့်ပြည့်စုံစုံ လုပ်လိုက်ဖို့ရာ ဆုံးဖြတ်ဖြစ်သွားတယ်။
+          </div>
+        </div>
+        <div class="milestone-item">
+          <div class="milestone-date">May 16, 2025</div>
+          <div class="milestone-description">
+            **လျှောက်ရှာလျှောက်လုပ်**
+            မောရိသျှ ကလောင်ရဲ့ ပထမဆုံးသော ပင်ကိုယ်ရေးစာအုပ်ကို လုပ်ငန်းစတင်ပါတယ်။
+            လိုအပ်တဲ့ ကုန်ကြမ်းအချက်အလက်တွေကို အချိန်တော်တော် ယူထားပြီးမှ လုပ်ဖို့ ဆုံးဖြတ်လိုက်တာပါ။
+            ပေါ်ပင်စာပေလက်ရာမဖြစ်အောင် အထူးကြိုးစားသွားပြီး ရေးသားသွားဖို့ စိတ်ပိုင်းဖြတ်ထားပါတယ်။
+            အချိန်ကောင်းရောက်မှ စာအုပ်အပ်သွားဖို့ စဉ်းစားထားပါတယ်။
+          </div>
+        </div>
+      </section>
 
-         <h3>2025</h3>
-                <div class="milestone-item">
-                    <div class="milestone-date">July 16, 2025</div>
-                    <div class="milestone-description">
-                        **Founder vs Investor** 
-                        by Elizabeth Zalman and Jerry Neumann - တို့ရဲ့ စွန့်စားစီးပွား ရင်းနှီးမြှုပ်နှံမှုဆိုင်ရာ စီမံခန့်ခွဲမှုလမ်းပြစာအုပ်ကို 
-                        "တည်ထောင်သူနဲ့ ရင်းနှီးမြှုပ်နှံသူ" အမည်နဲ့ မြန်မာဘာသာသို့ ဘာသာပြန်ဆိုပြီးစီးခဲ့ပါတယ်။ 
-                        အချိန်အများကြီး မယူလိုက်ရပေမဲ့၊ ဘာသာပြန်ဆိုခဲ့သမျှ စာအုပ်တွေထဲက စာမျက်နှာအများဆုံးဖြစ်သလို ရင်းနှီးကျွမ်းဝင်မှု အားနည်းတဲ့
-                        နယ်ပယ်ဖြစ်တာကြောင့် ဉာဏအား တော်တော်လေး စိုက်ထုတ်လိုက်ရတယ်။ 
-                    </div>
-                </div>
-                <div class="milestone-item">
-                    <div class="milestone-date">May 21, 2025</div>
-                    <div class="milestone-description">
-                        **သိရီဂဏပတိ** မဟာပိန္နဲအရှင်၏ မဟာဝင် စာအုပ် ဘာသာပြန်ဆိုမှု ပြီးစီးအောင်မြင်ခဲ့ပါတယ်။ အောင်မြင်မှု မှတ်ကျောက်တိုင်တခုပါပဲ။ 
-                        ပေါ့ပေါ့ပါးပါးပဲ ရေးဖို့ တွေးခဲ့ပေမဲ့၊ တကယ်လုပ်ဖြစ်တော့မှ တလက်စတည်း ပြည့်ပြည့်စုံစုံ လုပ်လိုက်ဖို့ရာ ဆုံးဖြတ်ဖြစ်သွားတယ်။ 
-                    </div>
-                </div>
-             <div class="milestone-item">
-                    <div class="milestone-date">May 16, 2025</div>
-                    <div class="milestone-description">
-                        **လျှောက်ရှာလျှောက်လုပ်** 
-                        မောရိသျှ ကလောင်ရဲ့ ပထမဆုံးသော ပင်ကိုယ်ရေးစာအုပ်ကို လုပ်ငန်းစတင်ပါတယ်။ 
-                        လိုအပ်တဲ့ ကုန်ကြမ်းအချက်အလက်တွေကို အချိန်တော်တော် ယူထားပြီးမှ လုပ်ဖို့ ဆုံးဖြတ်လိုက်တာပါ။
-                        ပေါ်ပင်စာပေလက်ရာမဖြစ်အောင် အထူးကြိုးစားသွားပြီး ရေးသားသွားဖို့ စိတ်ပိုင်းဖြတ်ထားပါတယ်။
-                        အချိန်ကောင်းရောက်မှ စာအုပ်အပ်သွားဖို့ စဉ်းစားထားပါတယ်။ 
-                </div>
-                
-                </section>
+      <section>
+        <div class="milestone-item">
+          <div class="milestone-date">April 27, 2025</div>
+          <div class="milestone-description">
+            **အာမာဒဲလ်မှော်ဝင်ကျမ်း**
+            အနောက်တိုင်း မဟာဂန္ဓာရီမဟာဂမ္ဘီရစာပေအမျိုးအစားဝင် ဧရုမံ ကလောင်ရဲ့ ဒုတိယမြောက် လက်ရာ အောင်မြင်စွာ
+            ဘာသာပြန်ဆိုပြီးစီးခဲ့ပါတယ်။ လပိုင်းအတွင်း ပြီးစီးသွားနိုင်မယ့် အလုပ်တခုအဖြစ် ရူးမိုက်စွာ ထင်မြင်ခဲ့ပေမဲ့၊
+            ဘာသာပြန်ခဲ့သမျှ စာအုပ်တွေထဲမှာ အလုပ်အရှုပ်ဆုံးနဲ့ စိတ်ခွန်အား လူခွန်အား အတော်လေးကို စိုက်ထုတ်လိုက်ရတဲ့ စာအုပ်ဖြစ်သွားတယ်။
+            ငယ်ငယ်ကတည်းက ဖြစ်မြောက်စေချင်ခဲ့တဲ့ စာအုပ်မျိုးဆိုတော့လည်း အားထုတ်ရကျိုးနပ်ပါတယ်။
+          </div>
+        </div>
+        <div class="milestone-item">
+          <div class="milestone-date">April 18, 2025</div>
+          <div class="milestone-description">
+            **ကိုယ့်ကိုယ်ကိုယ် ပြောင်းလဲလိုက်ပါ** Darius Roroux ရဲ့ နာမည်ကျော် လက်ရာတခုဖြစ်တဲ့ Foucs on What Matters စာအုပ်ကို
+            ကနဦးက စာဖတ် (SarPhat) ပလက်ဖောင်းမှာ ဖတ်ဖို့အတွက် ရည်ရွယ်ပြီး ရေးသားခဲ့တာဆိုပေမဲ့၊ စာဖတ် လုပ်ငန်းအုပ်စုနဲ့ လုပ်ငန်းပိုင်းဆိုင်ရာ
+            မသင့်မြတ်မှုတွေကြောင့် စာရိပ်မြိုင်စာပေနဲ့ပဲ လက်တွဲထုတ်ဝေဖို့ ဆုံးဖြတ်ခဲ့ရတဲ့ စာအုပ်လေးပါ။ တည့်တည့်တွေး စာအုပ်လောက် ကျော်ကြားမှု
+            အားနည်းသွားပေမဲ့၊ ရေရှည်အတွက် အတော်လေး အထောက်အကူဖြစ်မယ့် စာအုပ်လေးပါ။
+            ပေါ့ပေါ့ပါးပါးနဲ့ ဖတ်လို့ကောင်း၊ ဘာသာပြန်လို့ကောင်းတဲ့ စာအုပ်ပါ။
+          </div>
+        </div>
+        <div class="milestone-item">
+          <div class="milestone-date">March 8, 2025</div>
+          <div class="milestone-description">
+            **ဘဝဥပဒေ-၅၀**
+            မောရိသျှ ကလောင်နဲ့ ရေးခဲ့သမျှထဲမှာ ထူးထူးခြားခြား အဖြစ်ဆုံးဖြစ်သလို၊ Robert Greene ရဲ့ လက်ရာတွေ အားလုံးထဲကမှ အနှစ်ချုပ် မဟုတ်ဘဲ၊
+            မူရင်းစာအုပ်အပြည့်အစုံကို ပထမဆုံး ဘာသာပြန်ဆိုထားတဲ့ လက်ရာပါ။ The 50th Law စာအုပ်ကို ကိုယ်ပိုင်အမြင် သေးသိမ်ကျဉ်းမြောင်းမှုကြောင့်
+            အထင်သေးခဲ့ပေမဲ့၊ ဘာသာပြန်ဆိုပြီးတော့မှ အတော်လေး လေးပင်ပြီး အတော်လေး အရေးပါတဲ့ စာအုပ်တအုပ် ဖြစ်နေမှန်း သိခဲ့ရတယ်။ သင်္ခန်းစာတွေ
+            အများကြီး ရခဲ့သလို၊ အတော်လေး ဗဟုသုတပေးနိုင်စွမ်းကြီးတဲ့ စာအုပ်လေးပါ။ အာဏာစက်နည်းတူ အောင်မြင်မှုတွေ ရသွားဖို့ မျှော်လင့်မိတယ်။
+          </div>
+        </div>
+      </section>
 
-         <section>
-          
-                <div class="milestone-item">
-                    <div class="milestone-date">April 27, 2025</div>
-                    <div class="milestone-description">
-                        **အာမာဒဲလ်မှော်ဝင်ကျမ်း** 
-                        အနောက်တိုင်း မဟာဂန္ဓာရီမဟာဂမ္ဘီရစာပေအမျိုးအစားဝင်  ဧရုမံ ကလောင်ရဲ့ ဒုတိယမြောက် လက်ရာ အောင်မြင်စွာ 
-                        ဘာသာပြန်ဆိုပြီးစီးခဲ့ပါတယ်။ လပိုင်းအတွင်း ပြီးစီးသွားနိုင်မယ့် အလုပ်တခုအဖြစ် ရူးမိုက်စွာ ထင်မြင်ခဲ့ပေမဲ့၊ 
-                        ဘာသာပြန်ခဲ့သမျှ စာအုပ်တွေထဲမှာ အလုပ်အရှုပ်ဆုံးနဲ့ စိတ်ခွန်အား လူခွန်အား အတော်လေးကို စိုက်ထုတ်လိုက်ရတဲ့ စာအုပ်ဖြစ်သွားတယ်။ 
-                        ငယ်ငယ်ကတည်းက ဖြစ်မြောက်စေချင်ခဲ့တဲ့ စာအုပ်မျိုးဆိုတော့လည်း အားထုတ်ရကျိုးနပ်ပါတယ်။ 
-                    </div>
-                </div>
-                <div class="milestone-item">
-                    <div class="milestone-date">April 18, 2025</div>
-                    <div class="milestone-description">
-                        **ကိုယ့်ကိုယ်ကိုယ် ပြောင်းလဲလိုက်ပါ** Darius Roroux ရဲ့ နာမည်ကျော် လက်ရာတခုဖြစ်တဲ့ Foucs on What Matters စာအုပ်ကို 
-                        ကနဦးက စာဖတ် (SarPhat) ပလက်ဖောင်းမှာ ဖတ်ဖို့အတွက် ရည်ရွယ်ပြီး ရေးသားခဲ့တာဆိုပေမဲ့၊ စာဖတ် လုပ်ငန်းအုပ်စုနဲ့ လုပ်ငန်းပိုင်းဆိုင်ရာ
-                        မသင့်မြတ်မှုတွေကြောင့် စာရိပ်မြိုင်စာပေနဲ့ပဲ လက်တွဲထုတ်ဝေဖို့ ဆုံးဖြတ်ခဲ့ရတဲ့ စာအုပ်လေးပါ။ တည့်တည့်တွေး စာအုပ်လောက် ကျော်ကြားမှု
-                        အားနည်းသွားပေမဲ့၊ ရေရှည်အတွက် အတော်လေး အထောက်အကူဖြစ်မယ့် စာအုပ်လေးပါ။ 
-                        ပေါ့ပေါ့ပါးပါးနဲ့ ဖတ်လို့ကောင်း၊ ဘာသာပြန်လို့ကောင်းတဲ့ စာအုပ်ပါ။
-                    </div>
-                </div>
-             <div class="milestone-item">
-                    <div class="milestone-date">March 8, 2025</div>
-                    <div class="milestone-description">
-                        **ဘဝဥပဒေ-၅၀** 
-                        မောရိသျှ ကလောင်နဲ့ ရေးခဲ့သမျှထဲမှာ ထူးထူးခြားခြား အဖြစ်ဆုံးဖြစ်သလို၊ Robert Greene ရဲ့ လက်ရာတွေ အားလုံးထဲကမှ အနှစ်ချုပ် မဟုတ်ဘဲ၊
-                        မူရင်းစာအုပ်အပြည့်အစုံကို ပထမဆုံး ဘာသာပြန်ဆိုထားတဲ့ လက်ရာပါ။ The 50th Law စာအုပ်ကို ကိုယ်ပိုင်အမြင် သေးသိမ်ကျဉ်းမြောင်းမှုကြောင့်
-                        အထင်သေးခဲ့ပေမဲ့၊ ဘာသာပြန်ဆိုပြီးတော့မှ အတော်လေး လေးပင်ပြီး အတော်လေး အရေးပါတဲ့ စာအုပ်တအုပ် ဖြစ်နေမှန်း သိခဲ့ရတယ်။ သင်္ခန်းစာတွေ 
-                        အများကြီး ရခဲ့သလို၊ အတော်လေး ဗဟုသုတပေးနိုင်စွမ်းကြီးတဲ့ စာအုပ်လေးပါ။ အာဏာစက်နည်းတူ အောင်မြင်မှုတွေ ရသွားဖို့ မျှော်လင့်မိတယ်။
-                </div>
-                </section>
+      <section>
+        <div class="milestone-item">
+          <div class="milestone-date">February 7, 2025</div>
+          <div class="milestone-description">
+            **အခုပဲလုပ်လိုက်ပါ**
+            မောရိသျှ ကလောင်နဲ့ ထုတ်ဝေသွားဖို့ လျာထားတဲ့ ယုံကြည်မှုရှင်းတမ်း စာအုပ် ရေးနေရင်း ခေါင်းမီးတောက်လို့ ပေါ့ပေါ့ပါးပါး ကြားဖြတ် ရေးဖြစ်လိုက်တဲ့
+            အလုပ်တခုဖြစ်ပြီး အချိန်တိုအတွင်း ပြီးစီးသွားခဲ့တယ်။ လူသာ(အတွေးအမြင်) ကလောင်ရဲ့ ပထမဆုံး ပွဲဦးထွက်လက်ရာလေးပါ။
+          </div>
+        </div>
+        <div class="milestone-item">
+          <div class="milestone-date">January 20, 2025</div>
+          <div class="milestone-description">
+            **ဆော်လမွန်မှော်ဝင်ကျမ်း** အနောက်တိုင်း မဟာဂန္ဓာရီ မဟာဂမ္ဘီရကျမ်းစာတွေ ဘာသာပြန်ပြီး ထုတ်ဝေဖို့ရာ စာရိပ်မြိုင်စာပေနဲ့ စကားပြောဖြစ်ပြီး
+            နှစ်လအကြာမှာ ရုပ်လုံးပေါ်အောင် ကြိုးစားနိုင်ခဲ့တဲ့ အောင်မြင်မှုတခုပါ။ ငယ်ငယ်ကတည်းက လုပ်ချင်ခဲ့တဲ့ အိပ်မက်တခုကို အကောင်အထည် ဖော်နိုင်ခဲ့တဲ့
+            အောင်မြင်မှုကြီးဆိုလည်း မမှားပါဘူး။
+          </div>
+        </div>
+      </section>
 
-                <section>
-          
-                <div class="milestone-item">
-                    <div class="milestone-date">February 7, 2025</div>
-                    <div class="milestone-description">
-                        **အခုပဲလုပ်လိုက်ပါ** 
-                        မောရိသျှ ကလောင်နဲ့ ထုတ်ဝေသွားဖို့ လျာထားတဲ့ ယုံကြည်မှုရှင်းတမ်း စာအုပ် ရေးနေရင်း ခေါင်းမီးတောက်လို့ ပေါ့ပေါ့ပါးပါး ကြားဖြတ် ရေးဖြစ်လိုက်တဲ့
-                        အလုပ်တခုဖြစ်ပြီး အချိန်တိုအတွင်း ပြီးစီးသွားခဲ့တယ်။ လူသာ(အတွေးအမြင်) ကလောင်ရဲ့ ပထမဆုံး ပွဲဦးထွက်လက်ရာလေးပါ။
-                    </div>
-                </div>
-                <div class="milestone-item">
-                    <div class="milestone-date">January 20, 2025</div>
-                    <div class="milestone-description">
-                        **ဆော်လမွန်မှော်ဝင်ကျမ်း** အနောက်တိုင်း မဟာဂန္ဓာရီ မဟာဂမ္ဘီရကျမ်းစာတွေ ဘာသာပြန်ပြီး ထုတ်ဝေဖို့ရာ စာရိပ်မြိုင်စာပေနဲ့ စကားပြောဖြစ်ပြီး
-                        နှစ်လအကြာမှာ ရုပ်လုံးပေါ်အောင် ကြိုးစားနိုင်ခဲ့တဲ့ အောင်မြင်မှုတခုပါ။ ငယ်ငယ်ကတည်းက လုပ်ချင်ခဲ့တဲ့ အိပ်မက်တခုကို အကောင်အထည် ဖော်နိုင်ခဲ့တဲ့
-                        အောင်မြင်မှုကြီးဆိုလည်း မမှားပါဘူး။ 
-                    </div>
-                </div>
-            
-                </section>
+      <section>
+        <h3>2024 Milestones</h3>
+        <div class="milestone-item">
+          <div class="milestone-date">September 20, 2024</div>
+          <div class="milestone-description">
+            **SarPhat**
+            စာဖတ်-SarPhat ဆိုတဲ့ စာဖတ်ပလက်ဖောင်းလုပ်ငန်းစုရဲ့ ကမ်းလှမ်းဖိတ်ခေါ်မှု စတင်လက်ခံနိုင်ခဲ့ပြီး၊
+            နှစ်ဖက်သဘောတူညီမှုတွေနဲ့ ဆောင်းပါးတိုတွေ ရောင်းချဖြစ်ခဲ့တယ်။ ဆောင်းပါးတိုပေါင်း (၁၂၀) နဲ့အတူ နောက်ပိုင်းမှာ
+            စာဖတ်အုပ်စုနဲ့ လက်တွဲပြီး ထုတ်ဝေဖို့အတွက်ဆိုပြီး သီးခြား ဆောင်းပါး (၈၀) ကိုလည်း ပေးခဲ့တယ်။ ဒါပေမဲ့
+            အဆင်မပြေခဲ့ပါဘူး။ ဝါသနာအရင်းခံတဲ့ လုပ်ငန်းကို စီးပွားရေးဆန်တဲ့ မူဝါဒနဲ့ ဖော်ဆောင်တဲ့ လုပ်ငန်းစုဖြစ်နေတာကြောင့်
+            စာအုပ်ထုတ်ဝေဖို့ကိစ္စကို ပြန်ရုတ်သိမ်းခဲ့တယ်။ သဘောတူညီထားခဲ့တဲ့အတိုင်း ဆောင်းပါး (၈၀) ကိုတော့ ပေးခဲ့ပါတယ်။
+          </div>
+        </div>
+        <div class="milestone-item">
+          <div class="milestone-date">September 8, 2024</div>
+          <div class="milestone-description">
+            **မာယာပညာအနှစ်ချုပ်** Robert Greene ရဲ့ လက်ရာကောင်းတခုကို ထပ်ပြီး ဘာသာပြန်ဆိုနိုင်ခဲ့တယ်။ ဘာသာပြန်နေရင်း အတိတ်က
+            မိုက်မဲမှုတွေက သင်္ခန်းစာအတော်လေး ရခဲ့တယ်။ တခန်းပြီး တခန်း ပြန်ဆိုပြီးတိုင်း နောက်တခန်း ဆက်ဖို့အရေး လက်တွန့်နေရတဲ့အထိကို ဖြစ်သွားခဲ့တယ်။
+            တော်တော် စိတ်ဝင်စားဖို့ ကောင်းတဲ့ စာအုပ်လေးပါ။
+          </div>
+        </div>
+        <div class="milestone-item">
+          <div class="milestone-date">July 1, 2024</div>
+          <div class="milestone-description">
+            **ပျော်ရွှင်မှုဆိုသည်မှာ**
+            ShweNote Publishing House နဲ့ လက်တွဲပြီး ထုတ်ဝေဖို့ လျာထားတဲ့ ဒုတိယမြောက်လက်ရာကို ပြီးစီးအောင်မြင်ဖြစ်မြောက်သည်အထိ
+            ဘာသာပြန်ဆိုနိုင်ခဲ့ပါတယ်။ ဘာသာပြန်ဆိုခဲ့သမျှ စာအုပ်တွေအားလုံးထက် အရှုပ်ထွေးဆုံး၊ အလေးပင်ဆုံး၊ အခက်ခဲဆုံး၊ စိန်ခေါ်မှု အများဆုံး
+            စာအုပ်လေးပါ။ ပြန်တွေးကြည့်ရင်တော့ ပေးဆပ်ရတာနဲ့ မတန်သလို ခံစားရတယ်။ စာဖတ်နည်းတူ ဝါသနာအရင်းခံလုပ်ငန်းမျိုးကို စီးပွားရေး ပေတံနဲ့
+            တိုင်းတာပြီး လုပ်တဲ့ လူတွေနဲ့ လက်တွဲရတာဆိုတော့လည်း စိတ်ပင်ပန်းစရာတွေ ခနခန ကြုံခဲ့ရတယ်။
+          </div>
+        </div>
+      </section>
 
-         <section>
-                <h3>2024</h3>
-                <div class="milestone-item">
-                    <div class="milestone-date">September 20, 2024</div>
-                    <div class="milestone-description">
-                        **SarPhat** 
-                        စာဖတ်-SarPhat ဆိုတဲ့ စာဖတ်ပလက်ဖောင်းလုပ်ငန်းစုရဲ့ ကမ်းလှမ်းဖိတ်ခေါ်မှု စတင်လက်ခံနိုင်ခဲ့ပြီး၊ 
-                        နှစ်ဖက်သဘောတူညီမှုတွေနဲ့ ဆောင်းပါးတိုတွေ ရောင်းချဖြစ်ခဲ့တယ်။ ဆောင်းပါးတိုပေါင်း (၁၂၀) နဲ့အတူ နောက်ပိုင်းမှာ 
-                        စာဖတ်အုပ်စုနဲ့ လက်တွဲပြီး ထုတ်ဝေဖို့အတွက်ဆိုပြီး သီးခြား ဆောင်းပါး (၈၀) ကိုလည်း ပေးခဲ့တယ်။ ဒါပေမဲ့ 
-                        အဆင်မပြေခဲ့ပါဘူး။ ဝါသနာအရင်းခံတဲ့ လုပ်ငန်းကို စီးပွားရေးဆန်တဲ့ မူဝါဒနဲ့ ဖော်ဆောင်တဲ့ လုပ်ငန်းစုဖြစ်နေတာကြောင့်
-                        စာအုပ်ထုတ်ဝေဖို့ကိစ္စကို ပြန်ရုတ်သိမ်းခဲ့တယ်။ သဘောတူညီထားခဲ့တဲ့အတိုင်း ဆောင်းပါး (၈၀) ကိုတော့ ပေးခဲ့ပါတယ်။
-                    </div>
-                </div>
-                <div class="milestone-item">
-                    <div class="milestone-date">September 8, 2024</div>
-                    <div class="milestone-description">
-                        **မာယာပညာအနှစ်ချုပ်** Robert Greene ရဲ့ လက်ရာကောင်းတခုကို ထပ်ပြီး ဘာသာပြန်ဆိုနိုင်ခဲ့တယ်။ ဘာသာပြန်နေရင်း အတိတ်က
-                        မိုက်မဲမှုတွေက သင်္ခန်းစာအတော်လေး ရခဲ့တယ်။ တခန်းပြီး တခန်း ပြန်ဆိုပြီးတိုင်း နောက်တခန်း ဆက်ဖို့အရေး လက်တွန့်နေရတဲ့အထိကို ဖြစ်သွားခဲ့တယ်။ 
-                        တော်တော် စိတ်ဝင်စားဖို့ ကောင်းတဲ့ စာအုပ်လေးပါ။
-                    </div>
-                </div>
-             <div class="milestone-item">
-                    <div class="milestone-date">July 1, 2024</div>
-                    <div class="milestone-description">
-                        **ပျော်ရွှင်မှုဆိုသည်မှာ** 
-                        ShweNote Publishing House နဲ့ လက်တွဲပြီး ထုတ်ဝေဖို့ လျာထားတဲ့ ဒုတိယမြောက်လက်ရာကို ပြီးစီးအောင်မြင်ဖြစ်မြောက်သည်အထိ
-                        ဘာသာပြန်ဆိုနိုင်ခဲ့ပါတယ်။ ဘာသာပြန်ဆိုခဲ့သမျှ စာအုပ်တွေအားလုံးထက် အရှုပ်ထွေးဆုံး၊ အလေးပင်ဆုံး၊ အခက်ခဲဆုံး၊ စိန်ခေါ်မှု အများဆုံး 
-                        စာအုပ်လေးပါ။ ပြန်တွေးကြည့်ရင်တော့ ပေးဆပ်ရတာနဲ့ မတန်သလို ခံစားရတယ်။ စာဖတ်နည်းတူ ဝါသနာအရင်းခံလုပ်ငန်းမျိုးကို စီးပွားရေး ပေတံနဲ့
-                        တိုင်းတာပြီး လုပ်တဲ့ လူတွေနဲ့ လက်တွဲရတာဆိုတော့လည်း စိတ်ပင်ပန်းစရာတွေ ခနခန ကြုံခဲ့ရတယ်။ 
+      <section>
+        <div class="milestone-item">
+          <div class="milestone-date">March 26, 2024</div>
+          <div class="milestone-description">
+            **ပလ္လင်ပေါ်အလွယ်တက်နည်း**
+            Robert Greene ရဲ့ နောက်ထပ် လက်ရာကောင်းတခုကို မြန်မာဘာသာပြန်ဆိုလို့ ပြီးစီးခဲ့ပြန်ပါပြီ။ လေးပင်သလောက် စိတ်ဝင်စားစရာ
+            သင်္ခန်းစာတွေအများကြီး ပါဝင်ပါတယ်။ ကြိုးစားခဲ့ရသလောက် ထိုက်တန်တဲ့ အောင်မြင်မှုတွေ ရလိမ့်မယ်လို့ မျှော်လင့်ထားတဲ့ လက်ရာလေးပါ။
+          </div>
+        </div>
+        <div class="milestone-item">
+          <div class="milestone-date">January 24, 2024</div>
+          <div class="milestone-description">
+            **ညစ်နွမ်းစေသောတရားများ**
+            နှစ်သစ်မှာ မင်္ဂလာရှိတဲ့ စာအုပ်လေးတခုကို ဘာသာပြန်ဆိုနိုင်ခဲ့တယ်။ (မိတ်ဆွေကောင်း) ဘုန်းကြီး ဒေါက်တာတိက္ခဉာဏလင်္ကာရရဲ့ မဟာဘွဲ့ယူစာတမ်းကို
+            မြန်မာပြန်ရတာပါ။ ဒါပေမဲ့ ထူးခြားသွားအောင် ခေတ်ပြိုင်အမြင်နဲ့ သုံးသပ်တဲ့ ရှုထောင့်တွေပါ ထည့်ပြီး ဘာသာပြန်ဆိုဖြစ်ခဲ့တယ်။ စာအုပ်အဖြစ် ထုတ်ဝေဖို့ လျာထားပေမယ့်
+            မလုပ်ဖြစ်ဖို့များပါတယ်။
+          </div>
+        </div>
+        <div class="milestone-item">
+          <div class="milestone-date">January 5, 2024</div>
+          <div class="milestone-description">
+            **အာဏာစက် နည်းဥပဒေသ (၄၈) ရပ်**
+            ပန်းဆက်လမ်းရဲ့ ဂုဏ်ဆောင် အရောင်းရဆုံးစာရင်းဝင် စာအုပ်တအုပ် ဖြစ်လာမယ်လို့ မမျှော်လင့်ခဲ့ရတဲ့ စာအုပ်ပါ။ ကျွန်တော့်ရှေ့ ဘာသာပြန်ဆိုထားတဲ့ လက်ရာကောင်း
+            နှစ်ခုရှိပေမဲ့ အကောင်းဆုံးကြိုးစားထားနိုင်ခဲ့ပြီး စိတ်ကျေနပ်မှုများစွာ ပေးနိုင်တဲ့ စာအုပ်လေး ဖြစ်ပါတယ်။ အားထုတ်ရကျိုး အလွန်နပ်တဲ့ စာအုပ်ဆိုလည်း မမှားပါဘူး။
+          </div>
+        </div>
+      </section>
 
-                </section>
+      <section>
+        <h3>2023 Milestones</h3>
+        <div class="milestone-item">
+          <div class="milestone-date">November 30, 2023</div>
+          <div class="milestone-description">
+            **မျက်ကွယ်ပြုလို့ မရလောက်အောင် ထူးချွန်ပြလိုက်ပါ**
+            ShweNote Publishing House နဲ့ ပထမဆုံး လက်တွဲဖြစ်တဲ့ ဘာသာပြန်စာအုပ်လေးဖြစ်ပါတယ်။ သုံးကြိမ်တိတိ ပြန်လည်ပြင်ဆင်ခဲ့ရပြီး၊
+            အဆင်မပြေမှုများစွာကြားထဲကနေ ဖြစ်မြောက်သွားခဲ့တဲ့ အမှတ်တရတခုပါ။ အောင်မြင်သလောက် စိတ်ကျေနပ်မှု မရလိုက်ပါဘူး။
+          </div>
+        </div>
+        <div class="milestone-item">
+          <div class="milestone-date">October 12, 2023</div>
+          <div class="milestone-description">
+            **ဆရာအို၏ ဓမ္မနီတိ**
+            လောင်ဇူးရဲ့ တောက်တဲ့ကျင်းကို လူတိုင်းသိကြသလို၊ ဘာသာပြန်လက်ရာများစွာ ထွက်ရှိပြီးဖြစ်ပါတယ်။ ဒါပေမဲ့ စိတ်ကျေနပ်လောက်တဲ့
+            လက်ရာမျိုး မရှိသေးတာကတကြောင်း၊ ကိုယ်တိုင်ကလည်း စိတ်ဝင်စားလို့ရယ်၊ ထုတ်ဝေသူကလည်း သဘောကျ လက်ခံလို့
+            ဘာသာပြန်ဆိုဖြစ်ခဲ့ပါတယ်။ ဘာသာပြန်ဆိုချက်တိုင်းကို ပြန်ဖတ်ကြည့်မိတိုင်း စိတ်ကျေနပ်ရတယ်။ စာအုပ်အဖြစ် ထွက်လာတဲ့အခါ
+            အားရကျေနပ်လောက်စရာ ဖြစ်မယ်လို့ မျှော်လင့်ထားရတာပဲ။
+          </div>
+        </div>
+        <div class="milestone-item">
+          <div class="milestone-date">October 3, 2023</div>
+          <div class="milestone-description">
+            **ShweNote AudioBook**
+            ShweNote နဲ့ Full AudioBook ရောင်းချဖို့ နှစ်ဦးသဘောတူ စာချုပ်ချုပ်နိုင်ခဲ့တယ်။ အောင်မြင်မှုကြီးတခုပါ။
+            (အောင်မြင်မှုတိုင်း စိတ်ကျေနပ်မှု စိတ်ချမ်းသာမှု စိတ်အေးချမ်းမှု ပေးနိုင်တာ မဟုတ်ကြောင်း ဘဝသင်္ခန်းစာကြီး ရလိုက်တယ်။
+            မောရိသျှကလောင်အတွက် အသံစာအုပ်တွေ ရှိတာကပဲ အဆိုးထဲက အကောင်းလို့ မှတ်လိုက်ပါတယ်။ )
+          </div>
+        </div>
+      </section>
 
-                <section>
-            
-                <div class="milestone-item">
-                    <div class="milestone-date">March 26, 2024</div>
-                    <div class="milestone-description">
-                        **ပလ္လင်ပေါ်အလွယ်တက်နည်း** 
-                       Robert Greene ရဲ့ နောက်ထပ် လက်ရာကောင်းတခုကို မြန်မာဘာသာပြန်ဆိုလို့ ပြီးစီးခဲ့ပြန်ပါပြီ။ လေးပင်သလောက် စိတ်ဝင်စားစရာ
-                       သင်္ခန်းစာတွေအများကြီး ပါဝင်ပါတယ်။ ကြိုးစားခဲ့ရသလောက် ထိုက်တန်တဲ့ အောင်မြင်မှုတွေ ရလိမ့်မယ်လို့ မျှော်လင့်ထားတဲ့ လက်ရာလေးပါ။
-                    </div>
-                </div>
-                <div class="milestone-item">
-                    <div class="milestone-date">January 24, 2024</div>
-                    <div class="milestone-description">
-                        **ညစ်နွမ်းစေသောတရားများ** 
-                        နှစ်သစ်မှာ မင်္ဂလာရှိတဲ့ စာအုပ်လေးတခုကို ဘာသာပြန်ဆိုနိုင်ခဲ့တယ်။ (မိတ်ဆွေကောင်း) ဘုန်းကြီး ဒေါက်တာတိက္ခဉာဏလင်္ကာရရဲ့ မဟာဘွဲ့ယူစာတမ်းကို 
-                        မြန်မာပြန်ရတာပါ။ ဒါပေမဲ့ ထူးခြားသွားအောင် ခေတ်ပြိုင်အမြင်နဲ့ သုံးသပ်တဲ့ ရှုထောင့်တွေပါ ထည့်ပြီး ဘာသာပြန်ဆိုဖြစ်ခဲ့တယ်။ စာအုပ်အဖြစ် ထုတ်ဝေဖို့ လျာထားပေမယ့်
-                        မလုပ်ဖြစ်ဖို့များပါတယ်။ 
+      <section>
+        <div class="milestone-item">
+          <div class="milestone-date">September 27, 2023</div>
+          <div class="milestone-description">
+            **ShweNote**
+            ShewNote ကို ကိုယ်စားပြုတဲ့ Lar Phar Dee က တိုက်ရိုက်ဆက်သွယ်လာပြီး သူတို့နဲ့ ပူးပေါင်းဖို့ရာ ကမ်းလှမ်းလာတယ်။
+            အောင်မြင်မှုကြီးတခုလို ခံစားလိုက်ရပြီး၊ ပျော်ခဲ့ရတယ်။ အမှတ်တရပါပဲ။
+          </div>
+        </div>
+        <div class="milestone-item">
+          <div class="milestone-date">August 26, 2023</div>
+          <div class="milestone-description">
+            **ဧကရာဇ်မင်းရဲ့အတွေးမှတ်စု**
+            Marcus Aurelius ရဲ့ နာမည်ကျော် တပဓမ္မလက်ရာကို မြန်မာ့စာပေသမိုင်းမှာ ပထမဆုံးအဖြစ် ဘာသာပြန်ဆိုနိုင်ခဲ့တယ်။ စာပေဆိုင်ရာ အကြီးမားဆုံး
+            အောင်မြင်မှုကြီးတခုဆိုပေမဲ့၊ ဘယ်သူမှ မသိလိုက်ကြဘူး။ ဘဝမှာ ရေးခဲ့သမျှ ဘာသာပြန်ခဲ့သမျှ လေ့လာခဲ့သမျှ အားလုံးထက် စိန်ခေါ်မှု အများဆုံး စာအုပ်ပဲ။
+            လူခွန်အား စိတ်ခွန်အား များစွာ ပေးဆပ်လိုက်ရတယ်။
+          </div>
+        </div>
+        <div class="milestone-item">
+          <div class="milestone-date">July 30, 2023</div>
+          <div class="milestone-description">
+            **လူ့သဘောလူ့မနောအနှစ်ချုပ်**
+            နေမကောင်းတဲ့ကြားထဲကနေ အလုပ်ကြီးတခု ပြီးမြောက်အောင် လုပ်နိုင်ခဲ့တယ်။ ကျွန်တော် အတော်လေး ပင်ပန်းသွားတယ်။ ပင်ပန်းရကျိုးနပ်ပါတယ်။
+            ဒီစာအုပ်လေးက မောရိသျှဆိုတဲ့ ကလောင်အတွက် အုတ်မြစ်တည် ခိုင်ခံ့စေခဲ့တဲ့ စာအုပ်ဖြစ်သွားတယ်။
+          </div>
+        </div>
+      </section>
 
-                    </div>
-                </div>
-             <div class="milestone-item">
-                    <div class="milestone-date">January 5, 2024</div>
-                    <div class="milestone-description">
-                        **အာဏာစက် နည်းဥပဒေသ (၄၈) ရပ်** 
-                        ပန်းဆက်လမ်းရဲ့ ဂုဏ်ဆောင် အရောင်းရဆုံးစာရင်းဝင် စာအုပ်တအုပ် ဖြစ်လာမယ်လို့ မမျှော်လင့်ခဲ့ရတဲ့ စာအုပ်ပါ။ ကျွန်တော့်ရှေ့ ဘာသာပြန်ဆိုထားတဲ့ လက်ရာကောင်း
-                        နှစ်ခုရှိပေမဲ့ အကောင်းဆုံးကြိုးစားထားနိုင်ခဲ့ပြီး စိတ်ကျေနပ်မှုများစွာ ပေးနိုင်တဲ့ စာအုပ်လေး ဖြစ်ပါတယ်။ အားထုတ်ရကျိုး အလွန်နပ်တဲ့ စာအုပ်ဆိုလည်း မမှားပါဘူး။
-                        
-                </section>
-
-                <section>
-                <h3>2023</h3>
-                <div class="milestone-item">
-                    <div class="milestone-date">November 30, 2023</div>
-                    <div class="milestone-description">
-                        **မျက်ကွယ်ပြုလို့ မရလောက်အောင် ထူးချွန်ပြလိုက်ပါ** 
-                        ShweNote Publishing House နဲ့ ပထမဆုံး လက်တွဲဖြစ်တဲ့ ဘာသာပြန်စာအုပ်လေးဖြစ်ပါတယ်။ သုံးကြိမ်တိတိ ပြန်လည်ပြင်ဆင်ခဲ့ရပြီး၊ 
-                        အဆင်မပြေမှုများစွာကြားထဲကနေ ဖြစ်မြောက်သွားခဲ့တဲ့ အမှတ်တရတခုပါ။ အောင်မြင်သလောက် စိတ်ကျေနပ်မှု မရလိုက်ပါဘူး။ 
-                    </div>
-                </div>
-                <div class="milestone-item">
-                    <div class="milestone-date">October 12, 2023</div>
-                    <div class="milestone-description">
-                        **ဆရာအို၏ ဓမ္မနီတိ** 
-                        လောင်ဇူးရဲ့ တောက်တဲ့ကျင်းကို လူတိုင်းသိကြသလို၊ ဘာသာပြန်လက်ရာများစွာ ထွက်ရှိပြီးဖြစ်ပါတယ်။ ဒါပေမဲ့ စိတ်ကျေနပ်လောက်တဲ့ 
-                        လက်ရာမျိုး မရှိသေးတာကတကြောင်း၊ ကိုယ်တိုင်ကလည်း စိတ်ဝင်စားလို့ရယ်၊ ထုတ်ဝေသူကလည်း သဘောကျ လက်ခံလို့ 
-                        ဘာသာပြန်ဆိုဖြစ်ခဲ့ပါတယ်။ ဘာသာပြန်ဆိုချက်တိုင်းကို ပြန်ဖတ်ကြည့်မိတိုင်း စိတ်ကျေနပ်ရတယ်။ စာအုပ်အဖြစ် ထွက်လာတဲ့အခါ 
-                        အားရကျေနပ်လောက်စရာ ဖြစ်မယ်လို့ မျှော်လင့်ထားရတာပဲ။
-                    </div>
-                </div>
-             <div class="milestone-item">
-                    <div class="milestone-date">October 3, 2023</div>
-                    <div class="milestone-description">
-                        **ShweNote AudioBook** 
-                        ShweNote နဲ့ Full AudioBook ရောင်းချဖို့ နှစ်ဦးသဘောတူ စာချုပ်ချုပ်နိုင်ခဲ့တယ်။ အောင်မြင်မှုကြီးတခုပါ။ 
-                        (အောင်မြင်မှုတိုင်း စိတ်ကျေနပ်မှု စိတ်ချမ်းသာမှု စိတ်အေးချမ်းမှု ပေးနိုင်တာ မဟုတ်ကြောင်း ဘဝသင်္ခန်းစာကြီး ရလိုက်တယ်။ 
-                        မောရိသျှကလောင်အတွက် အသံစာအုပ်တွေ ရှိတာကပဲ အဆိုးထဲက အကောင်းလို့ မှတ်လိုက်ပါတယ်။ ) 
-
-                </section>
-
-                  </section>
-
-                <section>
-            
-                <div class="milestone-item">
-                    <div class="milestone-date">September 27, 2023</div>
-                    <div class="milestone-description">
-                        **ShweNote** 
-                        ShewNote ကို ကိုယ်စားပြုတဲ့ Lar Phar Dee က တိုက်ရိုက်ဆက်သွယ်လာပြီး သူတို့နဲ့ ပူးပေါင်းဖို့ရာ ကမ်းလှမ်းလာတယ်။ 
-                        အောင်မြင်မှုကြီးတခုလို ခံစားလိုက်ရပြီး၊ ပျော်ခဲ့ရတယ်။ အမှတ်တရပါပဲ။
-                    </div>
-                </div>
-                <div class="milestone-item">
-                    <div class="milestone-date">August 26, 2023</div>
-                    <div class="milestone-description">
-                        **ဧကရာဇ်မင်းရဲ့အတွေးမှတ်စု** 
-                        Marcus Aurelius ရဲ့ နာမည်ကျော် တပဓမ္မလက်ရာကို မြန်မာ့စာပေသမိုင်းမှာ ပထမဆုံးအဖြစ် ဘာသာပြန်ဆိုနိုင်ခဲ့တယ်။ စာပေဆိုင်ရာ အကြီးမားဆုံး
-                        အောင်မြင်မှုကြီးတခုဆိုပေမဲ့၊ ဘယ်သူမှ မသိလိုက်ကြဘူး။ ဘဝမှာ ရေးခဲ့သမျှ ဘာသာပြန်ခဲ့သမျှ လေ့လာခဲ့သမျှ အားလုံးထက် စိန်ခေါ်မှု အများဆုံး စာအုပ်ပဲ။ 
-                        လူခွန်အား စိတ်ခွန်အား များစွာ ပေးဆပ်လိုက်ရတယ်။ 
-                    </div>
-                </div>
-             <div class="milestone-item">
-                    <div class="milestone-date">July 30, 2023</div>
-                    <div class="milestone-description">
-                        **လူ့သဘောလူ့မနောအနှစ်ချုပ်** 
-                        နေမကောင်းတဲ့ကြားထဲကနေ အလုပ်ကြီးတခု ပြီးမြောက်အောင် လုပ်နိုင်ခဲ့တယ်။ ကျွန်တော် အတော်လေး ပင်ပန်းသွားတယ်။ ပင်ပန်းရကျိုးနပ်ပါတယ်။ 
-                        ဒီစာအုပ်လေးက မောရိသျှဆိုတဲ့ ကလောင်အတွက် အုတ်မြစ်တည် ခိုင်ခံ့စေခဲ့တဲ့ စာအုပ်ဖြစ်သွားတယ်။ 
-
-                </section>
-
-<section>
-            
-                <div class="milestone-item">
-                    <div class="milestone-date">March 17, 2023</div>
-                    <div class="milestone-description">
-                        **ပျားတမာ** 
-                        မောရိသျှဆိုတဲ့ ကလောင်ရဲ့ ကျေးဇူးရှင်အစစ် "ငြိမ်သက်ခြင်း"
- စာအုပ်ရဲ့ မူရင်းစာရေးသူ Susan Caine ရဲ့ နောက်ထပ်လက်ရာမွန်တခု - Bittersweet စာအုပ်ပါ။ အတော်လေးလည်း လေးပင်သလို၊ အတော်လေးလည်း
-စိတ်ဝင်စားဖို့ အင်မတန်ကောင်းတဲ့ စာအုပ်ပါ။                     </div>
-                </div>
-                <div class="milestone-item">
-                    <div class="milestone-date">February 27, 2023</div>
-                    <div class="milestone-description">
-                        **အသက်ကယ်လှေနဲ့ သူစိမ်းဧည့်သည်** 
-                       မောရိသျှရဲ့ ဒုတိယမြောက်သော ဘာသာပြန်ရသစာပေလက်ရာ။ The Stranger in the Lifeboat, တောက်လျှောက်ဆိုသလို 
-                       အတိုက်အခံတွေကြားထဲကနေ ရေးခဲ့ရတဲ့ စာအုပ်လေး။ ပြန်ဖတ်ကြည့်တိုင်း "ရှေ့ဆက်နိုင်ခြင်းက ဘဝအနှစ်သာရ" ဆိုတဲ့ အသိ ဝင်မိတယ်။
-                    </div>
-                </div>
-             <div class="milestone-item">
-                    <div class="milestone-date">September 8, 2023</div>
-                    <div class="milestone-description">
-                        **Mon Halsey's Amar** 
-                        ဆရာမ မွန်ဟော်စီရဲ့ အမာ စာအုပ်ကို အင်္ဂလိပ်ဘာသာပြန်ဆိုတာ ပြီးစီးခဲ့တယ်။ စိတ်ကျေနပ်မှုများစွာ ရပါတယ်။ အားထုတ်ရကျိုးတော့ မနပ်လိုက်ဘူး။
-                        British ဆန်ဆန် ရေးပေးထားတာကို American ဆန်တဲ့ အမြင်နဲ့ ဝေဖန်ခံရတော့ စိတ်ပင်ပန်းခဲ့ရတယ်။ အမြင်မတူ ရှုထောင့်မတူတော့လည်း ဘယ်တတ်နိုင်မလဲလေ။
-
-                </section>
-<section>
-                <h3>2022</h3>
-                <div class="milestone-item">
-                    <div class="milestone-date">July 29, 2022</div>
-                    <div class="milestone-description">
-                        **တည့်တည့်တွေး** 
-                        ကျန်းမာရေးလည်း လုံးဝ မကောင်း၊ ငွေကြေးဆိုင်ရာ အခက်အခဲအကြီးအကျယ် ကြုံတွေ့နေရတဲ့ကြားထဲ့ ရက်ပေါင်းနှစ်ဆယ်နဲ့ အပြီးသတ် ရေးနိုင်ခဲ့တဲ့ စာအုပ်လေး။
-                        မောရိသျှဆိုတဲ့ ကလောင်ရဲ့ အခြေခံ အုတ်မြစ်။ မောရိသျှကို မောရိသျှ ဖြစ်စေခဲ့တဲ့ စာအုပ်။ အသက်သခင် ကျေးဇူးရှင်စာအုပ်လေးပါ။  
-                    </div>
-                </div>
-                <div class="milestone-item">
-                    <div class="milestone-date">June 11, 2022</div>
-                    <div class="milestone-description">
-                        **ဓါတ်ငါးပါးစက်ဝန်း** 
-                        ဂန္ထဝင်စာအုပ်တွေ ဘာသာပြန်လက်ရာ ရှိသင့်တယ်ဆိုတဲ့ ခံယူချက်တွေနဲ့ မဖြစ်မနေ ဘာသာပြန်ထားခဲ့တဲ့ လက်ရာလေး။ အချိန်မတန်သေးတော့
-                        ဖူးပွင့်ခွင့် မရသေးပါဘူး။ တချိန်တော့ ဒီစာအုပ်လေး ထွက်လာမှာပါ။ မီယာမိုတို မူဆာရှီရဲ့ အကြောင်းတွေကို ဘယ်တော့မှ ထုတ်ပြနိုင်မှာလဲ။ အခုထိတော့ မသိသေးပါဘူး။
-                    </div>
-                </div>
-             <div class="milestone-item">
-                    <div class="milestone-date">April 7, 2022</div>
-                    <div class="milestone-description">
-                        **Coma** 
-                        ကျွန်တော့်ဘဝမှာ မမှတ်မိချင်ဆုံးနဲ့ မှတ်မိနေရမယ့် နေ့တနေ့။ ဆီးချိုရောဂါကြောင့် ကိုမာဝင်သွားပြီး သေလုနီးပါး ဖြစ်သွားခဲ့တဲ့နေ့ပါ။ 
-                        အဆိုးဝါးဆုံးသောအခြေအနေမှာတောင် ပစ်ပယ်မထားဘဲ အသက်ကယ်ပေးခဲ့တဲ့ ဘဝလက်တွဲဖော်ကောင်းကြောင့်သာလျှင် အသက်ရှင်နိုင်ခဲ့တာပါ။ 
-
-                </section>
-<section>
-              
-                <div class="milestone-item">
-                    <div class="milestone-date">February 12, 2022</div>
-                    <div class="milestone-description">
-                        **ဦးသျှောင်မင်းသားလုပ်ထုံးကျမ်း** 
-                       တော်ရုံတန်ရုံ ဘာသာပြန်စာရေးသူတွေတောင် လက်ရှောင်ကြတဲ့ စာအုပ်ကို ကျွန်တော် ကိုင်ခဲ့တယ်။ အလေးပင်ဆုံးဆိုတဲ့ စာအုပ်ကို ပေါ့ပေါ့ပါးပါးနဲ့
-                       ဖတ်လို့ကောင်းအောင် ဘာသာပြန်ဆိုနိုင်ခဲ့တယ်။ အမှတ်တရကြီးသလောက် အသိနည်းတဲ့ လက်ရာမွန်တခုပါ။  
-                    </div>
-                </div>
-                <div class="milestone-item">
-                    <div class="milestone-date">February 9, 2022</div>
-                    <div class="milestone-description">
-                        **ဆွန်ဇူး၏ စစ်ပညာ** 
-                        Sun Tzu ရဲ့ Pingfa စာအုပ်ကို လူတိုင်းသိတယ်။ ဒါပေမဲ့ စီးပွားရေးဆန်တဲ့ အမြင်တွေနဲ့ ရောထွေးထားတော့ အရောခံရပြီး အပေါဆန်သွားရော။ 
-                        မူရင်းကို မူရင်းအတိုင်း မူကျကျ ဘာသာပြန်ဆိုနိုင်ခဲ့တယ်။ မောရိသျှကို စစ်ပညာနဲ့ တွဲမသိကြပေမဲ့၊ တွဲသိသူတိုင်းရဲ့ အကြိုက်ဖြစ်သွားစေနိုင်တာတော့ 
-                        ဘဝအမှတ်တရ မှတ်ကျောက်တိုင်ပဲ။
-                    </div>
-                </div>
-            
-
-                </section>
-<section>
-                <h3>2021</h3>
-
-                <div class="milestone-item">
-                    <div class="milestone-date">December 4, 2021</div>
-                    <div class="milestone-description">
-                        **အသိတရား** 
-                       စာရေးတာလည်း ကျွမ်းကျင်မှု မရှိသေးသလို၊ မြန်မာစာ အထာမနပ်သေးတဲ့သူတယောက်အနေနဲ့ ကမ္ဘာ့ဂန္ထဝင်စာအုပ်ကိုမှ ဘာသာပြန်ရတော့ လေးကြိမ် လေးခါ
-                       ပြင်ရတာပေါ့။ မောရိသျှ ဆိုတဲ့ ကလောင်အတွက် ပထမဆုံး ပွဲဦးထွက် စာအုပ်လေးပါ။ ဒီစာအုပ်လေးကလည်း အသက်သခင် ကျေးဇူးရှင်လို့ ပြောနိုင်ပါတယ်။ 
-                </div>
-                </div>
-
-                <div class="milestone-item">
-                    <div class="milestone-date">October 23, 2021</div>
-                    <div class="milestone-description">
-                        **ပျင်းရိခြင်းဆိုတာမရှိပါ** 
-                        ဘဝစိန်ခေါ်မှုများစွာအကြား ထိုးနှက်မှုအကြီးဆုံးဖြစ်သွားခဲ့တဲ့ ဆုံးရှုံးမှုကြီးပါ။ အကောင်းဆုံး ကြိုးစားထားခဲ့သလို အများကြီး မျှော်လင့်ထားပေမဲ့ လိုချင်သလို မဖြစ်ခဲ့ဘဲ
-                        အဆိုးဝါးဆုံး အခြေအနေရောက်သွားအောင် တွန်းချခံလိုက်ရတဲ့ လက်ရာပါ။ အခုထိတော့ အမှားကြီးကို မဖာထေးနိုင်သေးပါဘူး။
-                    </div>
-                </div>
-
-             <div class="milestone-item">
-                    <div class="milestone-date">September 29, 2021</div>
-                    <div class="milestone-description">
-                        **My Rocky Klein** 
-                        ဘဝတလျှောက် ရွေးချယ်မှု များစွာ လုပ်ခဲ့တဲ့အနက် အမှန်ကန်ဆုံးဖြစ်သလို၊ နောင်တလုံးဝ မရစေတဲ့ ရွေးချယ်မှုကြီးတခု လုပ်ခဲ့တယ်။ 
-                        ကျွန်တော့်ဘဝရဲ့ ကျောထောက်နောက်ခံအစစ်၊ ကျွန်တော့်ဘဝရဲ့ အခြေခံ အုတ်မြစ်၊ ကျွန်တော့်ဘဝရဲ့ အကာအကွယ်တံတိုင်းကြီး၊ ကျွန်တော့်ဘဝရဲ့ 
-                        အားကိုးရာ၊ ကျွန်တော့်ဘဝရဲ့ တန်ဖိုးအစစ် ကျောက်ခဲဘုရင်လေးနဲ့ စတွေ့တဲ့ အမှတ်တရ နေ့ရက်လေးပါ။ 
-              </div>
+      <section>
+        <div class="milestone-item">
+          <div class="milestone-date">March 17, 2023</div>
+          <div class="milestone-description">
+            **ပျားတမာ**
+            မောရိသျှဆိုတဲ့ ကလောင်ရဲ့ ကျေးဇူးရှင်အစစ် "ငြိမ်သက်ခြင်း"
+            စာအုပ်ရဲ့ မူရင်းစာရေးသူ Susan Caine ရဲ့ နောက်ထပ်လက်ရာမွန်တခု - Bittersweet စာအုပ်ပါ။ အတော်လေးလည်း လေးပင်သလို၊ အတော်လေးလည်း
+            စိတ်ဝင်စားဖို့ အင်မတန်ကောင်းတဲ့ စာအုပ်ပါ။
+          </div>
+        </div>
+        <div class="milestone-item">
+          <div class="milestone-date">February 27, 2023</div>
+          <div class="milestone-description">
+            **အသက်ကယ်လှေနဲ့ သူစိမ်းဧည့်သည်**
+            မောရိသျှရဲ့ ဒုတိယမြောက်သော ဘာသာပြန်ရသစာပေလက်ရာ။ The Stranger in the Lifeboat, တောက်လျှောက်ဆိုသလို
+            အတိုက်အခံတွေကြားထဲကနေ ရေးခဲ့ရတဲ့ စာအုပ်လေး။ ပြန်ဖတ်ကြည့်တိုင်း "ရှေ့ဆက်နိုင်ခြင်းက ဘဝအနှစ်သာရ" ဆိုတဲ့ အသိ ဝင်မိတယ်။
+          </div>
+        </div>
+        <div class="milestone-item">
+          <div class="milestone-date">September 8, 2023</div>
+          <div class="milestone-description">
+            **Mon Halsey's Amar**
+            ဆရာမ မွန်ဟော်စီရဲ့ အမာ စာအုပ်ကို အင်္ဂလိပ်ဘာသာပြန်ဆိုတာ ပြီးစီးခဲ့တယ်။ စိတ်ကျေနပ်မှုများစွာ ရပါတယ်။ အားထုတ်ရကျိုးတော့ မနပ်လိုက်ဘူး။
+            British ဆန်ဆန် ရေးပေးထားတာကို American ဆန်တဲ့ အမြင်နဲ့ ဝေဖန်ခံရတော့ စိတ်ပင်ပန်းခဲ့ရတယ်။ အမြင်မတူ ရှုထောင့်မတူတော့လည်း ဘယ်တတ်နိုင်မလဲလေ။
+          </div>
+        </div>
+      </section>
+      <section>
+        <h3>2022 Milestones</h3>
+        <div class="milestone-item">
+          <div class="milestone-date">July 29, 2022</div>
+          <div class="milestone-description">
+            **တည့်တည့်တွေး**
+            ကျန်းမာရေးလည်း လုံးဝ မကောင်း၊ ငွေကြေးဆိုင်ရာ အခက်အခဲအကြီးအကျယ် ကြုံတွေ့နေရတဲ့ကြားထဲ့ ရက်ပေါင်းနှစ်ဆယ်နဲ့ အပြီးသတ် ရေးနိုင်ခဲ့တဲ့ စာအုပ်လေး။
+            မောရိသျှဆိုတဲ့ ကလောင်ရဲ့ အခြေခံ အုတ်မြစ်။ မောရိသျှကို မောရိသျှ ဖြစ်စေခဲ့တဲ့ စာအုပ်။ အသက်သခင် ကျေးဇူးရှင်စာအုပ်လေးပါ။
+          </div>
+        </div>
+        <div class="milestone-item">
+          <div class="milestone-date">June 11, 2022</div>
+          <div class="milestone-description">
+            **ဓါတ်ငါးပါးစက်ဝန်း**
+            ဂန္ထဝင်စာအုပ်တွေ ဘာသာပြန်လက်ရာ ရှိသင့်တယ်ဆိုတဲ့ ခံယူချက်တွေနဲ့ မဖြစ်မနေ ဘာသာပြန်ထားခဲ့တဲ့ လက်ရာလေး။ အချိန်မတန်သေးတော့
+            ဖူးပွင့်ခွင့် မရသေးပါဘူး။ တချိန်တော့ ဒီစာအုပ်လေး ထွက်လာမှာပါ။ မီယာမိုတို မူဆာရှီရဲ့ အကြောင်းတွေကို ဘယ်တော့မှ ထုတ်ပြနိုင်မှာလဲ။ အခုထိတော့ မသိသေးပါဘူး။
+          </div>
+        </div>
+        <div class="milestone-item">
+          <div class="milestone-date">April 7, 2022</div>
+          <div class="milestone-description">
+            **Coma**
+            ကျွန်တော့်ဘဝမှာ မမှတ်မိချင်ဆုံးနဲ့ မှတ်မိနေရမယ့် နေ့တနေ့။ ဆီးချိုရောဂါကြောင့် ကိုမာဝင်သွားပြီး သေလုနီးပါး ဖြစ်သွားခဲ့တဲ့နေ့ပါ။
+            အဆိုးဝါးဆုံးသောအခြေအနေမှာတောင် ပစ်ပယ်မထားဘဲ အသက်ကယ်ပေးခဲ့တဲ့ ဘဝလက်တွဲဖော်ကောင်းကြောင့်သာလျှင် အသက်ရှင်နိုင်ခဲ့တာပါ။
+          </div>
+        </div>
+      </section>
+      <section>
+        <div class="milestone-item">
+          <div class="milestone-date">February 12, 2022</div>
+          <div class="milestone-description">
+            **ဦးသျှောင်မင်းသားလုပ်ထုံးကျမ်း**
+            တော်ရုံတန်ရုံ ဘာသာပြန်စာရေးသူတွေတောင် လက်ရှောင်ကြတဲ့ စာအုပ်ကို ကျွန်တော် ကိုင်ခဲ့တယ်။ အလေးပင်ဆုံးဆိုတဲ့ စာအုပ်ကို ပေါ့ပေါ့ပါးပါးနဲ့
+            ဖတ်လို့ကောင်းအောင် ဘာသာပြန်ဆိုနိုင်ခဲ့တယ်။ အမှတ်တရကြီးသလောက် အသိနည်းတဲ့ လက်ရာမွန်တခုပါ။
+          </div>
+        </div>
+        <div class="milestone-item">
+          <div class="milestone-date">February 9, 2022</div>
+          <div class="milestone-description">
+            **ဆွန်ဇူး၏ စစ်ပညာ**
+            Sun Tzu ရဲ့ Pingfa စာအုပ်ကို လူတိုင်းသိတယ်။ ဒါပေမဲ့ စီးပွားရေးဆန်တဲ့ အမြင်တွေနဲ့ ရောထွေးထားတော့ အရောခံရပြီး အပေါဆန်သွားရော။
+            မူရင်းကို မူရင်းအတိုင်း မူကျကျ ဘာသာပြန်ဆိုနိုင်ခဲ့တယ်။ မောရိသျှကို စစ်ပညာနဲ့ တွဲမသိကြပေမဲ့၊ တွဲသိသူတိုင်းရဲ့ အကြိုက်ဖြစ်သွားစေနိုင်တာတော့
+            ဘဝအမှတ်တရ မှတ်ကျောက်တိုင်ပဲ။
+          </div>
+        </div>
+      </section>
+      <section>
+        <h3>2021 Milestones</h3>
+        <div class="milestone-item">
+          <div class="milestone-date">December 4, 2021</div>
+          <div class="milestone-description">
+            **အသိတရား**
+            စာရေးတာလည်း ကျွမ်းကျင်မှု မရှိသေးသလို၊ မြန်မာစာ အထာမနပ်သေးတဲ့သူတယောက်အနေနဲ့ ကမ္ဘာ့ဂန္ထဝင်စာအုပ်ကိုမှ ဘာသာပြန်ရတော့ လေးကြိမ် လေးခါ
+            ပြင်ရတာပေါ့။ မောရိသျှ ဆိုတဲ့ ကလောင်အတွက် ပထမဆုံး ပွဲဦးထွက် စာအုပ်လေးပါ။ ဒီစာအုပ်လေးကလည်း အသက်သခင် ကျေးဇူးရှင်လို့ ပြောနိုင်ပါတယ်။
+          </div>
+        </div>
+        <div class="milestone-item">
+          <div class="milestone-date">October 23, 2021</div>
+          <div class="milestone-description">
+            **ပျင်းရိခြင်းဆိုတာမရှိပါ**
+            ဘဝစိန်ခေါ်မှုများစွာအကြား ထိုးနှက်မှုအကြီးဆုံးဖြစ်သွားခဲ့တဲ့ ဆုံးရှုံးမှုကြီးပါ။ အကောင်းဆုံး ကြိုးစားထားခဲ့သလို အများကြီး မျှော်လင့်ထားပေမဲ့ လိုချင်သလို မဖြစ်ခဲ့ဘဲ
+            အဆိုးဝါးဆုံး အခြေအနေရောက်သွားအောင် တွန်းချခံလိုက်ရတဲ့ လက်ရာပါ။ အခုထိတော့ အမှားကြီးကို မဖာထေးနိုင်သေးပါဘူး။
+          </div>
+        </div>
+        <div class="milestone-item">
+          <div class="milestone-date">September 29, 2021</div>
+          <div class="milestone-description">
+            **My Rocky Klein**
+            ဘဝတလျှောက် ရွေးချယ်မှု များစွာ လုပ်ခဲ့တဲ့အနက် အမှန်ကန်ဆုံးဖြစ်သလို၊ နောင်တလုံးဝ မရစေတဲ့ ရွေးချယ်မှုကြီးတခု လုပ်ခဲ့တယ်။
+            ကျွန်တော့်ဘဝရဲ့ ကျောထောက်နောက်ခံအစစ်၊ ကျွန်တော့်ဘဝရဲ့ အခြေခံ အုတ်မြစ်၊ ကျွန်တော့်ဘဝရဲ့ အကာအကွယ်တံတိုင်းကြီး၊ ကျွန်တော့်ဘဝရဲ့
+            အားကိုးရာ၊ ကျွန်တော့်ဘဝရဲ့ တန်ဖိုးအစစ် ကျောက်ခဲဘုရင်လေးနဲ့ စတွေ့တဲ့ အမှတ်တရ နေ့ရက်လေးပါ။
+          </div>
+        </div>
       </section>
     </div>
 
     <div id="roadmap" class="tab-content">
       <section>
-          <h3>မောရိသျှ</h3>
-                <div class="roadmap-item">
-                    <div class="roadmap-date">Confession of a Buddhist Atheist</div>
-                    <div class="roadmap-description">
-                        <p>ဘာသာပြန်ခဲ့သမျှ စာအုပ်တွေအားလုံးထက် စိန်ခေါ်မှုအများဆုံးဖြစ်သလို အချိန်အတော်လေး ယူရတဲ့ စာအုပ်လေးပါ။ 
-                            တသက်လုံး လေ့လာထားခဲ့သမျှ အသိပညာဗဟုသုတတွေအားလုံးကို စာမေးပွဲ ပြန်စစ်သလားအောက်မေ့ရလောက်သည်အထိ
-                        စိန်ခေါ်မှု အလွန်ကြီးတဲ့ စာအုပ်ပါ။  </p>
-                        <p>2025 July အတွင်း ပြီးစီးနိုင်မယ်လို့ မျှော်မှန်းထားပါတယ်။ </p>
-                    </div>
-                </div>
-                <div class="roadmap-item">
-                    <div class="roadmap-date">Surrounded by Series</div>
-                    <div class="roadmap-description">
-                        <p>တလကို တအုပ် ဆက်တိုက် ပုံမှန်လေး ဘာသာပြန်သွားဖို့ တွေးထားပါတယ်။ စာအုပ်တွေကို အောက်ပါအတိုင်း အစဉ်လိုက် ဘာသာပြန်ဆိုထုတ်ဝေသွားဖို့ လျာထားပါတယ်။
-                            <p> 
+        <h3>မောရိသျှ - Upcoming Works</h3>
+        <div class="roadmap-item">
+          <div class="roadmap-date">Confession of a Buddhist Atheist</div>
+          <div class="roadmap-description">
+            <p>ဘာသာပြန်ခဲ့သမျှ စာအုပ်တွေအားလုံးထက် စိန်ခေါ်မှုအများဆုံးဖြစ်သလို အချိန်အတော်လေး ယူရတဲ့ စာအုပ်လေးပါ။
+              တသက်လုံး လေ့လာထားခဲ့သမျှ အသိပညာဗဟုသုတတွေအားလုံးကို စာမေးပွဲ ပြန်စစ်သလားအောက်မေ့ရလောက်သည်အထိ
+              စိန်ခေါ်မှု အလွန်ကြီးတဲ့ စာအုပ်ပါ။ </p>
+            <p>2025 July အတွင်း ပြီးစီးနိုင်မယ်လို့ မျှော်မှန်းထားပါတယ်။ </p>
+          </div>
+        </div>
+        <div class="roadmap-item">
+          <div class="roadmap-date">Surrounded by Series</div>
+          <div class="roadmap-description">
+            <p>တလကို တအုပ် ဆက်တိုက် ပုံမှန်လေး ဘာသာပြန်သွားဖို့ တွေးထားပါတယ်။ စာအုပ်တွေကို အောက်ပါအတိုင်း အစဉ်လိုက် ဘာသာပြန်ဆိုထုတ်ဝေသွားဖို့ လျာထားပါတယ်။</p>
+            <ul>
+              <li>လူပြိန်းတွေကြားမှာ</li>
+              <li>အကျင့်ယုတ်တဲ့ တစ်ကိုယ်ကောင်းတွေကြားမှာ</li>
+              <li>အကျင့်ယုတ်တဲ့သူဌေးတွေနဲ့ အပျင်းကြီးတဲ့ ဝန်ထမ်းတွေကြားမှာ</li>
+              <li>အတားအဆီးတွေကြားမှာ</li>
+              <li>အဆိပ်အတောက်များတဲ့အတ္တစွဲတွေကြားမှာ</li>
+              <li>စိတ်အကြည်ဓာတ် ညစ်နွမ်းစေသူတွေကြားမှာ</li>
+              <li>လူလိမ်တွေကြားမှာ</li>
+            </ul>
+            <p>မောရိသျှ ကလောင်အတွက် ပထမဆုံး စာစဉ်ကြီးဖြစ်သလို၊ အကြီးမားဆုံးသော စာပေဆိုင်ရာ စိန်ခေါ်မှုကြီးတခုဆိုရင်လည်း မမှားပါဘူး။</p>
+          </div>
+        </div>
+        <div class="roadmap-item">
+          <div class="roadmap-date">Thus Spoke Zarathustra</div>
+          <div class="roadmap-description">
+            <p>နိချေရဲ့ လက်ရာကောင်းတွေကို မြန်မာဘာသာပြန်ဆိုထားတဲ့ စာရေးသူတွေ အများကြီးရှိပါတယ်။ ဒါပေမဲ့ အများစုက အနှစ်ချုပ်ဆန်တဲ့ သဘောတရားလက်ရာတွေကိုပဲ
+              ဦးစားပေး ပြန်ဆိုကြတာဖြစ်တဲ့အတွက် မူရင်းကို ကိုင်ထားတဲ့ လက်ရာမျိုး ရှိအောင် ကိုယ့်ကိုယ်ကိုယ် စိန်ခေါ်တဲ့အနေနဲ့ ဘာသာပြန်ဆိုသွားမှာပါ။ ဒဿနိကစာပေဆိုင်ရာ
+              ဘဝပထမဆုံးနဲ့ အကြီးလေးဆုံးသော စိန်ခေါ်မှုကြီးလည်း ဖြစ်ပါတယ်။
+            </p>
+            <p>အချိန်တိုအတွင်း ဖြစ်မြောက်အောင် လုပ်လို့ ရမယ့် အလုပ်မျိုး မဟုတ်တဲ့အတွက် အချိန်ကောင်းကောင်းယူပြီး ဘာသာပြန်သွားဖို့ စဉ်းစားထားပါတယ်။ </p>
+          </div>
+        </div>
+        <div class="roadmap-item">
+          <div class="roadmap-date">Stoicism Classics</div>
+          <div class="roadmap-description">
+            <p> Epicurus, Epictetus, Seneca ထိပ်တန်း ဂန္ထဝင် တပဓမ္မအတွေးအခေါ်ပညာရှင်ကြီးတွေရဲ့ Selected Works တွေကို သီးခြား
+              ဘာသာပြန်ဆိုသွားဖို့ လျာထားပါတယ်။
+            </p>
+            <ul>
+              <li>အပယ်ခံသက်ကြားအိုရဲ့ ဘဝလမ်းညွှန်အကြံပေးစကားများ၊</li>
+              <li>အမေ့ခံကျေးကျွန်တယောက်ရဲ့ ဘဝသင်္ခန်းစာအဆုံးအမများ</li>
+              <li>ဥယျာဉ်မှူးကြီးပြောပြတဲ့ ပျော်ရွှင်ဖွယ်ဘဝ</li>
+            </ul>
+            <p>စိတ်ဝင်စားစရာ ခေါင်းစည်းလေးတွေနဲ့ ပေါ့ပေါ့လေး ဖတ်လို့ရအောင် ကြိုးစားပြီး ဘာသာပြန်ဆိုဖို့ ရည်ရွယ်ထားပါတယ်။ </p>
+          </div>
+        </div>
+        <div class="roadmap-item">
+          <div class="roadmap-date">The Denial of Death</div>
+          <div class="roadmap-description">
+            <p>Ernest Becker ရဲ့ နာမည်အကျော်ဆုံး၊ အပြောင်မြောက်ဆုံးလက်ရာဖြစ်တဲ့ စာအုပ်ကို "သေခြင်းတရားကို ငြင်းပယ်ဆန့်ကျင်ခြင်း" နာမည်နဲ့ ဘာသာပြန်ဆိုသွားဖို့ ရည်ရွယ်ထားပါတယ်။
+            </p>
+            <p> ထုတ်ဝေသူကိုယ်တိုင်ကလည်း မောရိသျှ ကလောင်နဲ့ အလိုက်ဖက်ဆုံးသော စာပေလက်ရာကောင်းဖြစ်တဲ့အတွက် စာမူရတာနဲ့ ထုတ်ဝေပေးဖို့ရာ ကတိကဝတ်ပြုထားပါတယ်။</p>
+          </div>
+        </div>
+        <div class="roadmap-item">
+          <div class="roadmap-date">The Craft of Power</div>
+          <div class="roadmap-description">
+            <p>ဒီစာအုပ်လေးသာ မရှိခဲ့ရင် Robert Greene ရဲ့ စာအုပ်တွေလည်း ရှိလာမှာ မဟုတ်ပါဘူး။ "ဩဇာတိက္ကမ" လို့ နာမည်ပေးထားပြီး ဘာသာပြန်ဖို့ လျာထားပေမဲ့၊
+              နာမည်တူ စာအုပ်က အရင်ဦးပြီး ထွက်သွားတော့ စာအုပ်နာမည်အသစ် စဉ်းစားရဦးမှာပါ။
+            </p>
+            <p>အကြောင်းအရာတွေကတော့ တသက်နဲ့တကိုယ် ရေးခဲ့ဖူးသမျှ Robert Greene အတွေးအခေါ်တွေထက် ပိုလေးပိုထက်တာတွေပါ။
+              လက်ဖျားခါရလောက်အောင် ဖတ်ပျော်ဖွယ် ဖြစ်ဦးမယ့် စာအုပ်ပါ။ အကောင်းဆုံး ကြိုးစားပြီး ဘာသာပြန်ဆိုသွားပါမယ်။ </p>
+          </div>
+        </div>
+        <div class="roadmap-item">
+          <div class="roadmap-date">Concise 33 Stretagies of War</div>
+          <div class="roadmap-description">
+            <p>အနှစ်ချုပ်လက်ရာတွေထဲမှာ ကျန်တဲ့ Robert Greene ရဲ့ နောက်ဆုံးလက်ကျန် လက်ရာကောင်းတခုပါ။ စာအုပ်နာမည်နဲ့ နိုင်ငံရေးအခြေအနေ သွားငြိစွန်းနေတော့ အလုပ်မမြောက်သေးဘူးဖြစ်နေတယ်။
+            </p>
+            <p>အချိန်ကောင်း အခါကောင်းကျရင်တော့ အချိန်တိုအတွင်း ရုပ်လုံးပေါ်အောင် ဘာသာပြန်ဆို ထုတ်ဝေသွားမှာပါ။</p>
+          </div>
+        </div>
+        <div class="roadmap-item">
+          <div class="roadmap-date">Behave & Determined</div>
+          <div class="roadmap-description">
+            <p>Robert M. Sapolsky ရဲ့ အကောင်းဆုံး လက်ရာနှစ်ခုကို ဘာသာပြန်ဆိုသွားဦးမှာပါ။ စိတ်ပညာစာအုပ်တွေထဲမှာ ထိပ်တန်းတွေလို့ ပြောနိုင်ပါတယ်။
+            </p>
+            <p>တဖြည်းဖြည်းချင်း ဖဲ့ပြီး ဘာသာပြန်သွားဖို့ စဉ်းစားထားပါတယ်။ </p>
+          </div>
+        </div>
+      </section>
 
-                            </p> 
-                            <li>လူပြိန်းတွေကြားမှာ</li>
-                        <li>အကျင့်ယုတ်တဲ့ တစ်ကိုယ်ကောင်းတွေကြားမှာ</li> 
-                    <li>အကျင့်ယုတ်တဲ့သူဌေးတွေနဲ့ အပျင်းကြီးတဲ့ ဝန်ထမ်းတွေကြားမှာ</li>
-                <li>အတားအဆီးတွေကြားမှာ</li>
-            <li>အဆိပ်အတောက်များတဲ့အတ္တစွဲတွေကြားမှာ</li>
-        <li>စိတ်အကြည်ဓာတ် ညစ်နွမ်းစေသူတွေကြားမှာ</li>
-    <li>လူလိမ်တွေကြားမှာ</li> </p>
-                        <p>မောရိသျှ ကလောင်အတွက် ပထမဆုံး စာစဉ်ကြီးဖြစ်သလို၊ အကြီးမားဆုံးသော စာပေဆိုင်ရာ စိန်ခေါ်မှုကြီးတခုဆိုရင်လည်း မမှားပါဘူး။</p>
-                    </div>
-                </div>
-                <div class="roadmap-item">
-                    <div class="roadmap-date">Thus Spoke Zarathustra</div>
-                    <div class="roadmap-description">
-                        <p>နိချေရဲ့ လက်ရာကောင်းတွေကို မြန်မာဘာသာပြန်ဆိုထားတဲ့ စာရေးသူတွေ အများကြီးရှိပါတယ်။ ဒါပေမဲ့ အများစုက အနှစ်ချုပ်ဆန်တဲ့ သဘောတရားလက်ရာတွေကိုပဲ
-                            ဦးစားပေး ပြန်ဆိုကြတာဖြစ်တဲ့အတွက် မူရင်းကို ကိုင်ထားတဲ့ လက်ရာမျိုး ရှိအောင် ကိုယ့်ကိုယ်ကိုယ် စိန်ခေါ်တဲ့အနေနဲ့ ဘာသာပြန်ဆိုသွားမှာပါ။ ဒဿနိကစာပေဆိုင်ရာ
-                            ဘဝပထမဆုံးနဲ့ အကြီးလေးဆုံးသော စိန်ခေါ်မှုကြီးလည်း ဖြစ်ပါတယ်။ 
-                        </p>
-                        <p>အချိန်တိုအတွင်း ဖြစ်မြောက်အောင် လုပ်လို့ ရမယ့် အလုပ်မျိုး မဟုတ်တဲ့အတွက် အချိန်ကောင်းကောင်းယူပြီး ဘာသာပြန်သွားဖို့ စဉ်းစားထားပါတယ်။ </p>
-                    </div>
-                </div>
-                <div class="roadmap-item">
-                    <div class="roadmap-date">Stoicism Classics</div>
-                    <div class="roadmap-description">
-                        <p> Epicurus, Epictetus, Seneca ထိပ်တန်း ဂန္ထဝင် တပဓမ္မအတွေးအခေါ်ပညာရှင်ကြီးတွေရဲ့ Selected Works တွေကို သီးခြား
-                            ဘာသာပြန်ဆိုသွားဖို့ လျာထားပါတယ်။ 
-                        </p>
-                        <li>အပယ်ခံသက်ကြားအိုရဲ ့ဘဝလမ်းညွှန်အကြံပေးစကားများ၊</li>
-                        <li>အမေ့ခံကျေးကျွန်တယောက်ရဲ့ ဘဝသင်္ခန်းစာအဆုံးအမများ</li>
-                        <li>ဥယျာဉ်မှူးကြီးပြောပြတဲ့ ပျော်ရွှင်ဖွယ်ဘဝ</li>
+      <section>
+        <h3>ဧရုမံ - Upcoming Works</h3>
+        <div class="roadmap-item">
+          <div class="roadmap-date">The Red Dragon</div>
+          <div class="roadmap-description">
+            <p>လေဒရာဂွန်မှော်ဝင်ကျမ်းလို့တော့ ကနဦး နာမည်ပေးထားတဲ့ စာအုပ်လေး ဘာသာပြန်နေပါတယ်။
+              ရှေ့စာအုပ်တွေနဲ့မတူ နည်းနည်း ရှုပ်ထွေးတော့ သတိထားရတယ်။ ဂါထာတွေ အများကြီးမပါပေမဲ့၊ ဇာတ်ထုပ်တွေ ရှုပ်တော့ မထွေးအောင် သတိထားရတယ်။
+            </p>
+          </div>
+        </div>
+        <div class="roadmap-item">
+          <div class="roadmap-date">Mahākālī Mahāvaṁsa</div>
+          <div class="roadmap-description">
+            <p>မယ်တော် ကာလီရဲ့ မဟာဝင်ကို ဘာသာပြန်ဆိုသွားပါမယ်။ ဂဏပတိစာအုပ်တုန်းကတော့ အတွေ့အကြုံမရှိသေးလို့ အမှားတွေ အများကြီး ပါသွားခဲ့ပေမဲ့၊
+              ဒီတခါ မမှားအောင် အထူးဂရုစိုက်ပြီး ဘာသာပြန်ဆိုသွားဖို့ တွေးထားပါတယ်။
+            </p>
+          </div>
+        </div>
+        <div class="roadmap-item">
+          <div class="roadmap-date">The Book of Enoch</div>
+          <div class="roadmap-description">
+            <p>ဧနော့မဟာဝင် လို့ ကနဦး တွေးထားပါတယ်။ ကျမ်းပယ်တခုဖြစ်တော့ သတိထား ရေးရမှာပါ။ Book 1 ရော၊ Book 2 ကိုပါ ရှေ့ပြန်နောက်ပြန်
+              ဘာသာပြန်သွားဖို့ စဉ်းစားထားပါတယ်။ အနောက်တိုင်း ဂန္ဓာရီပညာအတွက် မဖြစ်မနေ သိသင့်ရှိသင့်တဲ့ စာအုပ်ဖြစ်တာကြောင့် ထုတ်ဝေသွားနိုင်ဖို့ အထူးကြိုးစားသွားပါမယ်။
+            </p>
+          </div>
+        </div>
+      </section>
 
-                        <p>စိတ်ဝင်စားစရာ ခေါင်းစည်းလေးတွေနဲ့ ပေါ့ပေါ့လေး ဖတ်လို့ရအောင် ကြိုးစားပြီး ဘာသာပြန်ဆိုဖို့ ရည်ရွယ်ထားပါတယ်။ </p>
-                    </div>
-                
-                </div>
-                <div class="roadmap-item">
-                    <div class="roadmap-date">The Denial of Death</div>
-                    <div class="roadmap-description">
-                        <p>Ernest Becker ရဲ့ နာမည်အကျော်ဆုံး၊ အပြောင်မြောက်ဆုံးလက်ရာဖြစ်တဲ့ စာအုပ်ကို "သေခြင်းတရားကို ငြင်းပယ်ဆန့်ကျင်ခြင်း" နာမည်နဲ့ ဘာသာပြန်ဆိုသွားဖို့ ရည်ရွယ်ထားပါတယ်။  
-                        </p>
-                        <p> ထုတ်ဝေသူကိုယ်တိုင်ကလည်း မောရိသျှ ကလောင်နဲ့ အလိုက်ဖက်ဆုံးသော စာပေလက်ရာကောင်းဖြစ်တဲ့အတွက် စာမူရတာနဲ့ ထုတ်ဝေပေးဖို့ရာ ကတိကဝတ်ပြုထားပါတယ်။</p>
-                    </div>
-                </div>
-                <div class="roadmap-item">
-                    <div class="roadmap-date">The Craft of Power</div>
-                    <div class="roadmap-description">
-                        <p>ဒီစာအုပ်လေးသာ မရှိခဲ့ရင် Robert Greene ရဲ့ စာအုပ်တွေလည်း ရှိလာမှာ မဟုတ်ပါဘူး။ "ဩဇာတိက္ကမ" လို့ နာမည်ပေးထားပြီး ဘာသာပြန်ဖို့ လျာထားပေမဲ့၊
-                            နာမည်တူ စာအုပ်က အရင်ဦးပြီး ထွက်သွားတော့ စာအုပ်နာမည်အသစ် စဉ်းစားရဦးမှာပါ။  
-                        </p>
-                        <p>အကြောင်းအရာတွေကတော့ တသက်နဲ့တကိုယ် ရေးခဲ့ဖူးသမျှ Robert Greene အတွေးအခေါ်တွေထက် ပိုလေးပိုထက်တာတွေပါ။ 
-                            လက်ဖျားခါရလောက်အောင် ဖတ်ပျော်ဖွယ် ဖြစ်ဦးမယ့် စာအုပ်ပါ။ အကောင်းဆုံး ကြိုးစားပြီး ဘာသာပြန်ဆိုသွားပါမယ်။ </p>
-                    </div>
-                </div>
-                <div class="roadmap-item">
-                    <div class="roadmap-date">Concise 33 Stretagies of War</div>
-                    <div class="roadmap-description">
-                        <p>အနှစ်ချုပ်လက်ရာတွေထဲမှာ ကျန်တဲ့ Robert Greene ရဲ့ နောက်ဆုံးလက်ကျန် လက်ရာကောင်းတခုပါ။ စာအုပ်နာမည်နဲ့ နိုင်ငံရေးအခြေအနေ သွားငြိစွန်းနေတော့ အလုပ်မမြောက်သေးဘူးဖြစ်နေတယ်။ 
-                        </p>
-                        <p>အချိန်ကောင်း အခါကောင်းကျရင်တော့ အချိန်တိုအတွင်း ရုပ်လုံးပေါ်အောင် ဘာသာပြန်ဆို ထုတ်ဝေသွားမှာပါ။</p>
-                    </div>
-                </div>
-                <div class="roadmap-item">
-                    <div class="roadmap-date">Behave & Determined</div>
-                    <div class="roadmap-description">
-                        <p>Robert M. Sapolsky ရဲ့ အကောင်းဆုံး လက်ရာနှစ်ခုကို ဘာသာပြန်ဆိုသွားဦးမှာပါ။ စိတ်ပညာစာအုပ်တွေထဲမှာ ထိပ်တန်းတွေလို့ ပြောနိုင်ပါတယ်။ 
-                        </p>
-                        <p>တဖြည်းဖြည်းချင်း ဖဲ့ပြီး ဘာသာပြန်သွားဖို့ စဉ်းစားထားပါတယ်။  </p>
-                    </div>
-                </div>
-                <h3>ဧရုမံ</h3>
-                <div class="roadmap-item">
-                    <div class="roadmap-date">The Red Dragon</div>
-                    <div class="roadmap-description">
-                        <p>လေဒရာဂွန်မှော်ဝင်ကျမ်းလို့တော့ ကနဦး နာမည်ပေးထားတဲ့ စာအုပ်လေး ဘာသာပြန်နေပါတယ်။ 
-                            ရှေ့စာအုပ်တွေနဲ့မတူ နည်းနည်း ရှုပ်ထွေးတော့ သတိထားရတယ်။ ဂါထာတွေ အများကြီးမပါပေမဲ့၊ ဇာတ်ထုပ်တွေ ရှုပ်တော့ မထွေးအောင် သတိထားရတယ်။
-                        </p>
-                    
-                    </div>
-                </div>
-                <div class="roadmap-item">
-                    <div class="roadmap-date">Mahākālī Mahāvaṁsa</div>
-                    <div class="roadmap-description">
-                        <p>မယ်တော် ကာလီရဲ့ မဟာဝင်ကို ဘာသာပြန်ဆိုသွားပါမယ်။ ဂဏပတိစာအုပ်တုန်းကတော့ အတွေ့အကြုံမရှိသေးလို့ အမှားတွေ အများကြီး ပါသွားခဲ့ပေမဲ့၊
-                            ဒီတခါ မမှားအောင် အထူးဂရုစိုက်ပြီး ဘာသာပြန်ဆိုသွားဖို့ တွေးထားပါတယ်။ 
-                        </p>
-                    </div>
-                </div>
-                <div class="roadmap-item">
-                    <div class="roadmap-date">The Book of Enoch</div>
-                    <div class="roadmap-description">
-                        <p>ဧနော့မဟာဝင် လို့ ကနဦး တွေးထားပါတယ်။ ကျမ်းပယ်တခုဖြစ်တော့ သတိထား ရေးရမှာပါ။ Book 1 ရော၊ Book 2 ကိုပါ ရှေ့ပြန်နောက်ပြန် 
-                            ဘာသာပြန်သွားဖို့ စဉ်းစားထားပါတယ်။ အနောက်တိုင်း ဂန္ဓာရီပညာအတွက် မဖြစ်မနေ သိသင့်ရှိသင့်တဲ့ စာအုပ်ဖြစ်တာကြောင့် ထုတ်ဝေသွားနိုင်ဖို့ အထူးကြိုးစားသွားပါမယ်။ 
-                        </p>
-                    </div>
-                </div>
-                </section>
+      <section>
+        <h3>လူသာ(အတွေးအမြင်) - Upcoming Works</h3>
+        <div class="roadmap-item">
+          <div class="roadmap-date">Master Your Series</div>
+          <div class="roadmap-description">
+            <p>အမေဇုန် အရောင်းရဆုံး စာရင်းဝင် စာရေးသူ Thibaut Meurisse ရဲ့ လက်ရာတွေကို အစဉ်လိုက် ဘာသာပြန်ဆိုသွားပါမယ်။
+              ထုတ်ဝေသူကတော့ တအုပ်နဲ့တအုပ် နှစ်လခြား ထုတ်ဝေပေးသွားဖို့ ကတိကဝတ်ပြုထားပါတယ်။အတော်လေး စိတ်ဝင်စားဖို့ကောင်းမယ့် Series ပါ။ </p>
+            <ul>
+              <li>စိတ်ခံစားချက်တွေကို ပိုင်နိုင်စွာထိန်းကျောင်းလိုက်ပါ</li>
+              <li>အာရုံစူးစိုက်နိုင်စွမ်းကို ပိုင်နိုင်စွာမြှင့်တင်လိုက်ပါ</li>
+              <li>ဘဝကံကြမ္မာကို ပိုင်နိုင်စွာပြောင်းလဲလိုက်ပါ</li>
+              <li>အားထုတ်လိုစိတ်ကို ပိုင်နိုင်စွာတိုးမြှင့်လိုက်ပါ</li>
+              <li>တွေးခေါ်စဉ်းစားပုံကို ပိုင်နိုင်စွာပြောင်းလဲလိုက်ပါ</li>
+              <li>အောင်မြင်မှုတွေကို ပိုင်နိုင်စွာထိန်းသိမ်းကိုင်တွယ်လိုက်ပါ</li>
+              <li>ယုံကြည်ချက်တွေကို ပိုင်နိုင်စွာဆုပ်ကိုင်ထားလိုက်ပါ</li>
+              <li>သင်ယူလေ့လာနိုင်စွမ်းကို ပိုင်နိုင်စွာပြောင်းလဲတိုးမြှင့်လိုက်ပါ</li>
+              <li>ဆုံးဖြတ်ချက်တွေကို ပြတ်သားစွာပိုင်းဖြတ်လိုက်ပါ</li>
+              <li>တန်ဖိုးရှိအချိန်တွေကို ပိုင်နိုင်စွာစီမံခန့်ခွဲလိုက်ပါ</li>
+            </ul>
+          </div>
+        </div>
+        <div class="roadmap-item">
+          <div class="roadmap-date">The Road to Better Habits</div>
+          <div class="roadmap-description">
+            <p>Darius Foroux ရဲ့ ပေါ့ပေါ့ပါးပါး လက်ရာလေးနောက်တခုပါ။ စာအုပ်ခေါင်းစဉ်တော့ မစဉ်းစားရသေးပါဘူး။
+              ကြားထဲ Thibaut Meurisse ရဲ့ တအုပ်ပြီးတိုင်း Darius Foroux စာအုပ် တအုပ်ညှပ်ပြီး ဘာသာပြန်သွားပါမယ်။ </p>
+          </div>
+        </div>
+        <div class="roadmap-item">
+          <div class="roadmap-date">Win Your Inner Battles</div>
+          <div class="roadmap-description">
+            <p>Darius Foroux ရဲ့ တည့်တည့်တွေးစာအုပ်ပြီးရင် နာမည်အရဆုံးသော လက်ရာပါ။ ကြားညှပ်စာအုပ်အဖြစ် ပြန်သွားဖို့ လျာထားပါတယ်။ </p>
+          </div>
+        </div>
+        <div class="roadmap-item">
+          <div class="roadmap-date">What it Takes to Be Free</div>
+          <div class="roadmap-description">
+            <p>Darius Foroux ရဲ့ တည့်တည့်တွေးထက် အများကြီး ပိုကောင်းတဲ့ လက်ရာလို့တော့ ပြောကြပါတယ်။ ပေါ့ပေါ့ပါးပါးနဲ့ ထိမိတဲ့
+              ရေးသားချက်တွေ တွေ့ရဦးမှာ သေချာပါတယ်။ </p>
+          </div>
+        </div>
+      </section>
 
-                 <section>
-                <h3>လူသာ(အတွေးအမြင်)</h3>
-                <div class="roadmap-item">
-                    <div class="roadmap-date">Master Your Series</div>
-                    <div class="roadmap-description">
-                        <p>အမေဇုန် အရောင်းရဆုံး စာရင်းဝင် စာရေးသူ Thibaut Meurisse ရဲ့ လက်ရာတွေကို အစဉ်လိုက် ဘာသာပြန်ဆိုသွားပါမယ်။ 
-                            ထုတ်ဝေသူကတော့ တအုပ်နဲ့တအုပ် နှစ်လခြား ထုတ်ဝေပေးသွားဖို့ ကတိကဝတ်ပြုထားပါတယ်။အတော်လေး စိတ်ဝင်စားဖို့ကောင်းမယ့် Series ပါ။ </p>
-                        <li>စိတ်ခံစားချက်တွေကို ပိုင်နိုင်စွာထိန်းကျောင်းလိုက်ပါ</li>
-                        <li>အာရုံစူးစိုက်နိုင်စွမ်းကို ပိုင်နိုင်စွာမြှင့်တင်လိုက်ပါ</li>
-                        <li>ဘဝကံကြမ္မာကို ပိုင်နိုင်စွာပြောင်းလဲလိုက်ပါ</li>
-                        <li>အားထုတ်လိုစိတ်ကို ပိုင်နိုင်စွာတိုးမြှင့်လိုက်ပါ</li>
-                        <li>တွေးခေါ်စဉ်းစားပုံကို ပိုင်နိုင်စွာပြောင်းလဲလိုက်ပါ</li>
-                        <li>အောင်မြင်မှုတွေကို ပိုင်နိုင်စွာထိန်းသိမ်းကိုင်တွယ်လိုက်ပါ</li>
-                        <li>ယုံကြည်ချက်တွေကို ပိုင်နိုင်စွာဆုပ်ကိုင်ထားလိုက်ပါ</li>
-                        <li>သင်ယူလေ့လာနိုင်စွမ်းကို ပိုင်နိုင်စွာပြောင်းလဲတိုးမြှင့်လိုက်ပါ</li>
-                        <li>ဆုံးဖြတ်ချက်တွေကို ပြတ်သားစွာပိုင်းဖြတ်လိုက်ပါ</li>
-                        <li>တန်ဖိုးရှိအချိန်တွေကို ပိုင်နိုင်စွာစီမံခန့်ခွဲလိုက်ပါ</li>
-                    </div>
-                </div>
-                <div class="roadmap-item">
-                    <div class="roadmap-date">The Road to Better Habits</div>
-                    <div class="roadmap-description">
-                        <p>Darius Foroux ရဲ့ ပေါ့ပေါ့ပါးပါး လက်ရာလေးနောက်တခုပါ။ စာအုပ်ခေါင်းစဉ်တော့ မစဉ်းစားရသေးပါဘူး။ 
-                            ကြားထဲ Thibaut Meurisse ရဲ့ တအုပ်ပြီးတိုင်း Darius Foroux စာအုပ် တအုပ်ညှပ်ပြီး ဘာသာပြန်သွားပါမယ်။ </p>
-                    </div>
-                </div>
-                <div class="roadmap-item">
-                    <div class="roadmap-date">Win Your Inner Battles</div>
-                    <div class="roadmap-description">
-                        <p>Darius Foroux ရဲ့ တည့်တည့်တွေးစာအုပ်ပြီးရင် နာမည်အရဆုံးသော လက်ရာပါ။ ကြားညှပ်စာအုပ်အဖြစ် ပြန်သွားဖို့ လျာထားပါတယ်။ </p>
-                    </div>
-                </div>
+      <section>
+        <h3>ဒိုမဏိခ်မိုးမခ - Upcoming Works</h3>
+        <div class="roadmap-item">
+          <div class="roadmap-date">Opus 01</div>
+          <div class="roadmap-description">
+            <p>မော်ကွန်း၊ မှတ်တမ်း၊ ကျင့်ထုံးဆိုပြီး အတွဲကြီး သုံးတွဲနဲ့ ခွဲထွက်နေမယ့် မဟာဒဏ္ဍာရီကြီး။</p>
+            <ul>
+              <li>The Chronicle of Melitija (Opus01A)</li>
+              <li>The Epic of Oremona (Opus01M)</li>
+              <li>The Ethos of Regotija (Opus01O)</li>
+            </ul>
+          </div>
+        </div>
+        <div class="roadmap-item">
+          <div class="roadmap-date">Opus 02</div>
+          <div class="roadmap-description">
+            <p>မှာတမ်း၊ အဆိုအမိန့်၊ မိန့်ခွန်း၊ နီတိ ဆိုပြီး အတွဲကြီး လေးတွဲနဲ့ ခွဲထွက်နေမယ့် မဟာဝတ္ထုကြီး</p>
+            <ul>
+              <li>The Dictums of Ilideja (Opus02A)</li>
+              <li>The Axioms of Senatona (Opus02B)</li>
+              <li>The Rhetoric of Heromaja (Opus02G)</li>
+              <li>The Maxims of Aeromana (Opus02D)</li>
+            </ul>
+          </div>
+        </div>
+        <div class="roadmap-item">
+          <div class="roadmap-date">Opus 03</div>
+          <div class="roadmap-description">
+            <p>ဂန္ထဝင်ကျမ်းကြီးငါးကျမ်းအနေနဲ့ အတွဲကြီးလေးတွဲ ခွဲထွက်သွားမယ့် တတိယမြောက်လက်ရာ</p>
+            <p>Simanasil Universe ရဲ့ ဇာတ်ကြောင်းအရ ခွဲထွက်နေတဲ့ စာအုပ် ငါးအုပ်ပါ။</p>
+            <ul>
+              <li>White Tomes of Aganehara (Opus03A)</li>
+              <li>Black Tomes of Veruneja (Opus03B)</li>
+              <li>Red Tomes of Najagava (Opus03G)</li>
+              <li>Silver Tomes of Gunamora (Opus03D)</li>
+              <li>Golden Tomes of Nirigiri (Opus03E)</li>
+            </ul>
+          </div>
+        </div>
+        <div class="roadmap-item">
+          <div class="roadmap-date">Opus 04</div>
+          <div class="roadmap-description">
+            <p>ရာဇဝင်ချုပ်၊ မဟာဝင်ချုပ်၊ ဒဏ္ဍာရီချုပ်ဆိုပြီး အတွဲကြီး သုံးတွဲ ခွဲထွက်နေမယ့် စတုတ္ထမြောက်လက်ရာ</p>
+            <ul>
+              <li>Legends of Semanasil (Opus04A)</li>
+              <li>Folklore of Ururu (Opus04M)</li>
+              <li>Mythos of Neravera (Opus04O)</li>
+            </ul>
+          </div>
+        </div>
+      </section>
 
-                <div class="roadmap-item">
-                    <div class="roadmap-date">What it Takes to Be Free</div>
-                    <div class="roadmap-description">
-                        <p>Darius Foroux ရဲ့ တည့်တည့်တွေးထက် အများကြီး ပိုကောင်းတဲ့ လက်ရာလို့တော့ ပြောကြပါတယ်။ ပေါ့ပေါ့ပါးပါးနဲ့ ထိမိတဲ့
-                            ရေးသားချက်တွေ တွေ့ရဦးမှာ သေချာပါတယ်။  </p>
-                    </div>
-                </div>
-                <h3>ဒိုမဏိခ်မိုးမခ</h3>
-                <div class="roadmap-item">
-                    <div class="roadmap-date">Opus 01</div>
-                    <div class="roadmap-description">
-                        <p>မော်ကွန်း၊ မှတ်တမ်း၊ ကျင့်ထုံးဆိုပြီး အတွဲကြီး သုံးတွဲနဲ့ ခွဲထွက်နေမယ့် မဟာဒဏ္ဍာရီကြီး။</p>
-                        <li>The Chronicle of Melitija (Opus01A)</li>
-                        <li>The Epic of Oremona (Opus01M)</li>
-                        <li>The Ethos of Regotija (Opus01O)</li>
-                    </div>
-                </div>
-            
-
-                <div class="roadmap-item">
-                    <div class="roadmap-date">Opus 02</div>
-                    <div class="roadmap-description">
-                        <p>မှာတမ်း၊ အဆိုအမိန့်၊ မိန့်ခွန်း၊ နီတိ ဆိုပြီး အတွဲကြီး လေးတွဲနဲ့ ခွဲထွက်နေမယ့် မဟာဝတ္ထုကြီး</p>
-                        <li>The Dictums of Ilideja (Opus02A)</li>
-                        <li>The Axioms of Senatona (Opus02B)</li>
-                        <li>The Rhetoric of Heromaja (Opus02G)</li>
-                        <li>The Maxims of Aeromana (Opus02D)</li>
-                </div>
-                </div>
-            <div>
-                <div class="roadmap-item">
-                    <div class="roadmap-date">Opus 03</div>
-                    <div class="roadmap-description">
-                        <p>ဂန္ထဝင်ကျမ်းကြီးငါးကျမ်းအနေနဲ့ အတွဲကြီးလေးတွဲ ခွဲထွက်သွားမယ့် တတိယမြောက်လက်ရာ</p>
-                        <p>Simanasil Universe ရဲ့ ဇာတ်ကြောင်းအရ ခွဲထွက်နေတဲ့ စာအုပ် ငါးအုပ်ပါ။</p>
-                        <li>White Tomes of Aganehara (Opus03A)</li>
-                        <li>Black Tomes of Veruneja (Opus03B)</li>
-                        <li>Red Tomes of Najagava (Opus03G)</li>
-                        <li>Silver Tomes of Gunamora (Opus03D)</li>
-                        <li>Golden Tomes of Nirigiri (Opus03E)</li>
-                    </div>
-                </div>
-                    <div class="roadmap-item">
-                    <div class="roadmap-date">Opus 04</div>
-                    <div class="roadmap-description">
-                        <p>ရာဇဝင်ချုပ်၊ မဟာဝင်ချုပ်၊ ဒဏ္ဍာရီချုပ်ဆိုပြီး အတွဲကြီး သုံးတွဲ ခွဲထွက်နေမယ့် စတုတ္ထမြောက်လက်ရာ</p>
-                        <li>Legends of Semanasil (Opus04A)</li>
-                        <li>Folklore of Ururu (Opus04M)</li>
-                        <li>Mythos of Neravera (Opus04O)</li>
-                </div>
-                </div>
-            </div>
-                 <h3>အာဒိတြ</h3>
-                <div class="roadmap-item">
-                    <div class="roadmap-date">Marcea Eliade</div>
-                    <div class="roadmap-description">
-                        <p>A History of Religious Ideas</p>
-                        <p>Volume 1: From the Stone Age to the Eleusinian Mysteries</p>
-                        <p>Volume 2: From Gautama Buddha to the Triumph of Christianity</p>
-                        <p>Volume 3: From Muhammad to the Age of Reforms</p>
-                        <p>Images and Symbols</p>
-                        <p>Shamanism Archaic Techniques of Ecstasy</p>
-                        <p>Rites and Symbols of Initiation</p>
-                        <p>Patterns in comparative religion</p>
-                    </div>
-                </div>
-                <div class="roadmap-item">
-                    <div class="roadmap-date">René Guénon</div>
-                    <div class="roadmap-description">
-                        <p>The Crisis of the Modern World</p>
-                        <p>The Reign of Quantity and the Signs of the Times</p>
-                        <p>The Multiple States of the Being</p>
-                        <p>The King of the World</p>
-                        <p>Introduction to the Study of the Hindu Doctrines</p>
-                        <p>Symbolism of the Cross</p>
-                        <p>Perspectives on Initiation</p>
-                        <p>The Great Triad</p>
-                        <p>Fundamental Symbols The Universal Language of Sacred Science</p>
-                        <p>The Esoterism of Dante</p>
-                        <p>Spiritual Authority and Temporal Power</p>
-                        <p>Theosophy: History of a Pseudo-Religion</p>
-                        <p>Traditional Forms and Cosmic Cycles</p>
-                        <p>Mand and His Becoming, According to the Vedanta</p>
-                        <p>East and West</p>
-                        <p>Insights Into Islamic Esoterism and Taosim</p>
-                    </div>
-                </div>
-              
+      <section>
+        <h3>အာဒိတြ - Upcoming Works</h3>
+        <div class="roadmap-item">
+          <div class="roadmap-date">Marcea Eliade</div>
+          <div class="roadmap-description">
+            <ul>
+              <li>A History of Religious Ideas</li>
+              <li>Volume 1: From the Stone Age to the Eleusinian Mysteries</li>
+              <li>Volume 2: From Gautama Buddha to the Triumph of Christianity</li>
+              <li>Volume 3: From Muhammad to the Age of Reforms</li>
+              <li>Images and Symbols</li>
+              <li>Shamanism Archaic Techniques of Ecstasy</li>
+              <li>Rites and Symbols of Initiation</li>
+              <li>Patterns in comparative religion</li>
+            </ul>
+          </div>
+        </div>
+        <div class="roadmap-item">
+          <div class="roadmap-date">René Guénon</div>
+          <div class="roadmap-description">
+            <ul>
+              <li>The Crisis of the Modern World</li>
+              <li>The Reign of Quantity and the Signs of the Times</li>
+              <li>The Multiple States of the Being</li>
+              <li>The King of the World</li>
+              <li>Introduction to the Study of the Hindu Doctrines</li>
+              <li>Symbolism of the Cross</li>
+              <li>Perspectives on Initiation</li>
+              <li>The Great Triad</li>
+              <li>Fundamental Symbols The Universal Language of Sacred Science</li>
+              <li>The Esoterism of Dante</li>
+              <li>Spiritual Authority and Temporal Power</li>
+              <li>Theosophy: History of a Pseudo-Religion</li>
+              <li>Traditional Forms and Cosmic Cycles</li>
+              <li>Mand and His Becoming, According to the Vedanta</li>
+              <li>East and West</li>
+              <li>Insights Into Islamic Esoterism and Taosim</li>
+            </ul>
+          </div>
+        </div>
       </section>
     </div>
 
     <footer>
       <p>&copy; 2025 Morisha. All rights reserved.</p>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/morisha-alynn" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="https://facebook.com/morisha.alynn" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://t.me/morisha_alynn" target="_blank" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+        <a href="mailto:morisha.alynn@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+      </div>
     </footer>
   </div>
 
@@ -785,3 +1079,4 @@ Stamford International University မှ Bachelor of Business Administration in 
   </script>
 </body>
 </html>
+```
