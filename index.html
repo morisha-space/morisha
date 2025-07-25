@@ -3,108 +3,374 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - Profile</title>
-    <!-- Tailwind CSS CDN for modern styling -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts - Roboto -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>My Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        /* Custom CSS for Roboto font and base colors */
         body {
             font-family: 'Roboto', sans-serif;
-            background-color: #ffffff; /* White background */
-            color: #000000; /* Black text */
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2; /* Light grey background */
+            color: #333; /* Dark grey text */
+            line-height: 1.6;
         }
-        /* Active navigation link styling */
-        .nav-link.active {
-            font-weight: 700; /* Bold for active link */
-            color: #000000; /* Ensure black for active link */
-            border-bottom: 2px solid #000000; /* Underline for active link */
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background-color: #fff; /* White content background */
+            padding: 30px 40px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        header {
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-weight: 700;
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        h2 {
+            font-weight: 400;
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .tab-button {
+            background-color: transparent;
+            border: none;
+            padding: 15px 25px;
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.1em;
+            color: #555;
+            cursor: pointer;
+            transition: color 0.3s ease, border-bottom 0.3s ease;
+            outline: none;
+        }
+
+        .tab-button:hover {
+            color: #000;
+        }
+
+        .tab-button.active {
+            color: #000;
+            border-bottom: 3px solid #777; /* Darker grey for active tab */
+            font-weight: 700;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        section {
+            padding: 20px 0;
+        }
+
+        h3 {
+            font-weight: 700;
+            color: #444;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: baseline;
+        }
+
+        li::before {
+            content: '•';
+            color: #777;
+            font-size: 1.2em;
+            margin-right: 10px;
+        }
+
+        .milestone-item, .roadmap-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-left: 3px solid #bbb;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .milestone-item:hover, .roadmap-item:hover {
+            background-color: #f0f0f0;
+        }
+
+        .milestone-date, .roadmap-date {
+            font-weight: 700;
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        .milestone-description, .roadmap-description {
+            font-size: 0.95em;
+            color: #666;
+        }
+
+        .roadmap-item p {
+            margin-top: 5px;
+            margin-bottom: 0;
+        }
+
+        footer {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 40px;
+            border-top: 1px solid #eee;
+            color: #888;
+            font-size: 0.9em;
         }
     </style>
 </head>
-<body class="flex flex-col min-h-screen">
-    <!-- Navigation Bar -->
-    <nav class="bg-white p-4 shadow-sm">
-        <div class="container mx-auto flex justify-center space-x-8">
-            <a href="index.html" class="nav-link active text-lg px-3 py-2 rounded-md transition-colors duration-200 ease-in-out hover:bg-gray-100">Profile</a>
-            <a href="publish.html" class="nav-link text-lg px-3 py-2 rounded-md transition-colors duration-200 ease-in-out hover:bg-gray-100">Publish</a>
-            <a href="roadmap.html" class="nav-link text-lg px-3 py-2 rounded-md transition-colors duration-200 ease-in-out hover:bg-gray-100">Roadmap</a>
-        </div>
-    </nav>
+<body>
+    <div class="container">
+        <header>
+            <h1>Morisha</h1>
+            <h2>"Life is good."</h2>
+        </header>
 
-    <!-- Main Content Area -->
-    <main class="flex-grow container mx-auto p-6 md:p-8 lg:p-10">
-        <div class="bg-white rounded-lg shadow-md p-6 md:p-8 lg:p-10 mb-6">
-            <div class="flex flex-col md:flex-row items-center md:items-start gap-6">
-                <!-- Profile Picture Placeholder -->
-                <img src="https://placehold.co/150x150/e0e0e0/000000?text=Your+Photo" alt="Your Profile Photo" class="w-36 h-36 rounded-full object-cover shadow-sm">
+        <nav class="tabs">
+            <button class="tab-button active" data-tab="profile">Profile</button>
+            <button class="tab-button" data-tab="milestones">Milestones</button>
+            <button class="tab-button" data-tab="roadmap">Roadmap</button>
+        </nav>
+
+        <div id="profile" class="tab-content active">
+            <section>
+            
+                <p>
+                    ပန်းဆက်လမ်းစာပေ အရောင်းရဆုံးစာရင်းဝင် အိတ်ဆောင် အာဏာစက် နည်းဥပဒေသ (၄၈) ရပ်၊ 
+                    လူ့သဘောလူ့မနော အနှစ်ချုပ်၊ ဆွန်ဇူး၏ စစ်ပညာကျမ်းနဲ့ တည့်တည့်တွေး စတဲ့ Nation Wide Best Selling 
+                    စာအုပ်တွေရဲ့ ဘာသာပြန်စာရေးသူဖြစ်ပါတယ်။  
+                </p>
+                <p>
+ကြွက်နှစ်မှာမွေးတဲ့၊ ပြိဿရာသီဖွား ရှမ်းပြည်မြောက်ပိုင်းသားပါ။ စိတ်ဝင်စားသလို ဝါသနာပါတဲ့ 
+စိတ်ပညာ၊ ဘာသာဗေဒ၊ ဒဿနိက၊ လူမှုဗေဒ၊ ကိုးကွယ်မှု အလေ့အထ၊ ဂီတအနုသုခုမနဲ့အတူ 
+နိုင်ငံရေးသိပ္ပံပညာရပ်တွေကို ဆက်လက်လေ့လာနေဆဲဖြစ်ပြီး၊ ဘာသာပြန်ဆို ရေးသားပြုစုလျက်ရှိပါတယ်။                </p>
+           
+<p>
+                    မဟာဂန္ဓာရီမဟာဂမ္ဘီရစာပေလက်ရာဆန်းများကို "ဧရုမံ" "Eruman" ကလောင်၊ 
+                    ပေါ့ပေါ့ပါးပါး တက်ကျမ်းစာပေအမျိုးအစားဝင် လက်ရာဆန်းများကို "လူသာ(အတွေးအမြင်)" "Luther's Reflection" ကလောင်၊ 
+                    ကိုယ်ပိုင် ရသစာပေလက်ရာများ ရေးသားထုတ်ဝေရန်အတွက် "Dominik Willow" "ဒိုမဏိခ်မိုးမခ" ကလောင်နှင့်အတူ 
+                    ကိုးကွယ်မှုအလေ့အထ ဘာသာတရားများဆိုင်ရာ ခေတ်ဟောင်း-ခေတ်ပြိုင်ကျမ်းစာများကို ဘာသာပြန်ဆိုရေးသားထုတ်ဝေသွားရန်အတွက် 
+                    "အာဒိတြ" "Āditra" ကလောင်ခွဲများနှင့်လည်း အခါအားလျော်စွာ ရေးသားထုတ်ဝေလျက်ရှိပါတယ်။ 
+                </p>
+
+</section>
+            <section>
+                <h3>Update</h3>
+                <ul>
+                    <li>July 16, 2025 တွင် ပန်းဆက်လမ်းစာအုပ်တိုက်က Facebook ကနေတဆင့် "မာယာပညာ" အနှစ်ချုပ် စာအုပ်အတွက် Pre-order စတင်လက်ခံပြီး၊ July 28, 2025 တွင် စာအုပ်ထွက်ရှိမည်ဟု ကြေညာထားပါတယ်။ 
+                        စာအုပ်တန်ဖိုးကတော့ မြန်မာကျပ်ငွေ (၁၄,၀၀၀) ကျပ်ဖြစ်ပြီး၊ စာမျက်နှာပေါင်း (၂၇၁) မျက်နှာရှိပါတယ်။ </li>
+                    <li>July 8, 2025 တွင် စာရိပ်မြိုင်စာပေက ဧရုမံ ကလောင်ရဲ့ ပထမဆုံးသော သနန္တနဓမ္မဆိုင်ရာ ဘာသာပြန်လက်ရာ "သိရီဂဏပတိ-မဟာပိန္နဲအရှင်၏မဟာဝင်" စာအုပ်ကို တရားဝင် ထုတ်ဝေဖြန်ချိကြောင်း ကြေညာလိုက်ပါတယ်။ 
+                        စာမျက်နှာပေါင်း (၂၀၈) မျက်နှာရှိပြီး၊ စာအုပ်တန်ဖိုး (၁၃,၅၀၀) ကျပ်ဖြစ်ပါတယ်။ </li>
+                    <li>June 9, 2025 တွင် Surrounded by Series ကို ဘာသာပြန်ဆိုဖို့ ပန်းဆက်လမ်းစာအုပ်တိုက်နဲ့ သဘောတူညီချက် ရရှိခဲ့တာကြောင့် မောရိသျှ ကလောင်နဲ့ ထုတ်ဝေဖြန်ချိသွားပါမယ်။</li>
+                    <li>June 6, 2025 တွင် Founder vs Investor ရင်းနှီးမြှုပ်နှံမှုဆိုင်ရာ လမ်းပြစာအုပ်ကို "တည်ထောင်သူနဲ့ ရင်းနှီးမြှုပ်နှံသူ" အမည်နဲ့ ဘာသာပြန်ဆိုမှု လုပ်ငန်းစတင်ပါတယ်။ </li>
+                    <li>January 4, 2025 တွင် Stephen Batchelor ရဲ့ Confession of a Buddhist Atheist စာအုပ်ကို "ယုံကြည်မှုရှင်းတမ်း" အမည်နဲ့ ဘာသာပြန်ဆိုမှု လုပ်ငန်းစတင်ပါတယ်။ </li>
+                </ul>
+            </section>
+            <section>
+                <h3>Contact Information</h3>
+                <p>Email: <a href="morisha.alynn@gmail.com" style="color: #555; text-decoration: none;">morisha.alynn@gmail.com</a></p>
+                <p>LinkedIn: <a href="https://www.linkedin.com/in/morisha-alynn" target="_blank" style="color: #555; text-decoration: none;">linkedin.com/in/morisha-alynn</a></p>
+                <p>Facebook: <a href="https://facebook.com/morisha.alynn" target="_blank" style="color: #555; text-decoration: none;">facebook.com/</a>morisha.alynn</p>
+                <p>Telegram: <a href="https://t.me/morisha_alynn" target="_blank" style="color: #555; text-decoration: none;">telegram/</a>morisha_alynn</p>
+            </section>
+        </div>
+
+        <div id="milestones" class="tab-content">
+            <section>
+                <h3>2025</h3>
+                <div class="milestone-item">
+                    <div class="milestone-date">July 16, 2025</div>
+                    <div class="milestone-description">
+                        **Founder vs Investor** 
+                        by Elizabeth Zalman and Jerry Neumann - တို့ရဲ့ စွန့်စားစီးပွား ရင်းနှီးမြှုပ်နှံမှုဆိုင်ရာ စီမံခန့်ခွဲမှုလမ်းပြစာအုပ်ကို 
+                        "တည်ထောင်သူနဲ့ ရင်းနှီးမြှုပ်နှံသူ" အမည်နဲ့ မြန်မာဘာသာသို့ ဘာသာပြန်ဆိုပြီးစီးခဲ့ပါတယ်။ 
+                        အချိန်အများကြီး မယူလိုက်ရပေမဲ့၊ ဘာသာပြန်ဆိုခဲ့သမျှ စာအုပ်တွေထဲက စာမျက်နှာအများဆုံးဖြစ်သလို ရင်းနှီးကျွမ်းဝင်မှု အားနည်းတဲ့
+                        နယ်ပယ်ဖြစ်တာကြောင့် ဉာဏအား တော်တော်လေး စိုက်ထုတ်လိုက်ရတယ်။ 
+                    </div>
+                </div>
+                <div class="milestone-item">
+                    <div class="milestone-date">May 21, 2025</div>
+                    <div class="milestone-description">
+                        **သိရီဂဏပတိ** မဟာပိန္နဲအရှင်၏ မဟာဝင် စာအုပ် ဘာသာပြန်ဆိုမှု ပြီးစီးအောင်မြင်ခဲ့ပါတယ်။ အောင်မြင်မှု မှတ်ကျောက်တိုင်တခုပါပဲ။ 
+                        ပေါ့ပေါ့ပါးပါးပဲ ရေးဖို့ တွေးခဲ့ပေမဲ့၊ တကယ်လုပ်ဖြစ်တော့မှ တလက်စတည်း ပြည့်ပြည့်စုံစုံ လုပ်လိုက်ဖို့ရာ ဆုံးဖြတ်ဖြစ်သွားတယ်။ 
+                    </div>
+                </div>
+             <div class="milestone-item">
+                    <div class="milestone-date">May 16, 2025</div>
+                    <div class="milestone-description">
+                        **လျှောက်ရှာလျှောက်လုပ်** 
+                        မောရိသျှ ကလောင်ရဲ့ ပထမဆုံးသော ပင်ကိုယ်ရေးစာအုပ်ကို လုပ်ငန်းစတင်ပါတယ်။ 
+                        လိုအပ်တဲ့ ကုန်ကြမ်းအချက်အလက်တွေကို အချိန်တော်တော် ယူထားပြီးမှ လုပ်ဖို့ ဆုံးဖြတ်လိုက်တာပါ။
+                        ပေါ်ပင်စာပေလက်ရာမဖြစ်အောင် အထူးကြိုးစားသွားပြီး ရေးသားသွားဖို့ စိတ်ပိုင်းဖြတ်ထားပါတယ်။
+                        အချိန်ကောင်းရောက်မှ စာအုပ်အပ်သွားဖို့ စဉ်းစားထားပါတယ်။ 
+                </div>
                 
-                <!-- Profile Introduction -->
-                <div class="text-center md:text-left">
-                    <h1 class="text-3xl md:text-4xl font-bold mb-2">Hello, I'm [Your Name]</h1>
-                    <p class="text-lg md:text-xl text-gray-700 mb-4">
-                        [Your Profession/Role, e.g., Software Engineer | UI/UX Designer | Content Creator]
-                    </p>
-                    <p class="text-base leading-relaxed">
-                        A brief and engaging introduction about yourself. What drives you? What are your core values?
-                        Mention your key skills and what you're passionate about. This is your chance to make a great first impression!
-                        For example: "I specialize in creating intuitive and visually appealing web applications,
-                        with a strong focus on user experience and clean code. I'm passionate about solving complex problems
-                        and continuously learning new technologies."
-                    </p>
+                </section>
+
+         <section>
+          
+                <div class="milestone-item">
+                    <div class="milestone-date">April 27, 2025</div>
+                    <div class="milestone-description">
+                        **အာမာဒဲလ်မှော်ဝင်ကျမ်း** 
+                        အနောက်တိုင်း မဟာဂန္ဓာရီမဟာဂမ္ဘီရစာပေအမျိုးအစားဝင်  ဧရုမံ ကလောင်ရဲ့ ဒုတိယမြောက် လက်ရာ အောင်မြင်စွာ 
+                        ဘာသာပြန်ဆိုပြီးစီးခဲ့ပါတယ်။ လပိုင်းအတွင်း ပြီးစီးသွားနိုင်မယ့် အလုပ်တခုအဖြစ် ရူးမိုက်စွာ ထင်မြင်ခဲ့ပေမဲ့၊ 
+                        ဘာသာပြန်ခဲ့သမျှ စာအုပ်တွေထဲမှာ အလုပ်အရှုပ်ဆုံးနဲ့ စိတ်ခွန်အား လူခွန်အား အတော်လေးကို စိုက်ထုတ်လိုက်ရတဲ့ စာအုပ်ဖြစ်သွားတယ်။ 
+                        ငယ်ငယ်ကတည်းက ဖြစ်မြောက်စေချင်ခဲ့တဲ့ စာအုပ်မျိုးဆိုတော့လည်း အားထုတ်ရကျိုးနပ်ပါတယ်။ 
+                    </div>
                 </div>
-            </div>
+                <div class="milestone-item">
+                    <div class="milestone-date">April 18, 2025</div>
+                    <div class="milestone-description">
+                        **ကိုယ့်ကိုယ်ကိုယ် ပြောင်းလဲလိုက်ပါ** Darius Roroux ရဲ့ နာမည်ကျော် လက်ရာတခုဖြစ်တဲ့ Foucs on What Matters စာအုပ်ကို 
+                        ကနဦးက စာဖတ် (SarPhat) ပလက်ဖောင်းမှာ ဖတ်ဖို့အတွက် ရည်ရွယ်ပြီး ရေးသားခဲ့တာဆိုပေမဲ့၊ စာဖတ် လုပ်ငန်းအုပ်စုနဲ့ လုပ်ငန်းပိုင်းဆိုင်ရာ
+                        မသင့်မြတ်မှုတွေကြောင့် စာရိပ်မြိုင်စာပေနဲ့ပဲ လက်တွဲထုတ်ဝေဖို့ ဆုံးဖြတ်ခဲ့ရတဲ့ စာအုပ်လေးပါ။ တည့်တည့်တွေး စာအုပ်လောက် ကျော်ကြားမှု
+                        အားနည်းသွားပေမဲ့၊ ရေရှည်အတွက် အတော်လေး အထောက်အကူဖြစ်မယ့် စာအုပ်လေးပါ။ 
+                        ပေါ့ပေါ့ပါးပါးနဲ့ ဖတ်လို့ကောင်း၊ ဘာသာပြန်လို့ကောင်းတဲ့ စာအုပ်ပါ။
+                    </div>
+                </div>
+             <div class="milestone-item">
+                    <div class="milestone-date">March 8, 2025</div>
+                    <div class="milestone-description">
+                        **ဘဝဥပဒေ-၅၀** 
+                        မောရိသျှ ကလောင်နဲ့ ရေးခဲ့သမျှထဲမှာ ထူးထူးခြားခြား အဖြစ်ဆုံးဖြစ်သလို၊ Robert Greene ရဲ့ လက်ရာတွေ အားလုံးထဲကမှ အနှစ်ချုပ် မဟုတ်ဘဲ၊
+                        မူရင်းစာအုပ်အပြည့်အစုံကို ပထမဆုံး ဘာသာပြန်ဆိုထားတဲ့ လက်ရာပါ။ The 50th Law စာအုပ်ကို ကိုယ်ပိုင်အမြင် သေးသိမ်ကျဉ်းမြောင်းမှုကြောင့်
+                        အထင်သေးခဲ့ပေမဲ့၊ ဘာသာပြန်ဆိုပြီးတော့မှ အတော်လေး လေးပင်ပြီး အတော်လေး အရေးပါတဲ့ စာအုပ်တအုပ် ဖြစ်နေမှန်း သိခဲ့ရတယ်။ သင်္ခန်းစာတွေ 
+                        အများကြီး ရခဲ့သလို၊ အတော်လေး ဗဟုသုတပေးနိုင်စွမ်းကြီးတဲ့ စာအုပ်လေးပါ။ အာဏာစက်နည်းတူ အောင်မြင်မှုတွေ ရသွားဖို့ မျှော်လင့်မိတယ်။
+                </div>
+                </section>
+         <section>
+                <h3>2025</h3>
+                <div class="milestone-item">
+                    <div class="milestone-date">July 16, 2025</div>
+                    <div class="milestone-description">
+                        **Founder vs Investor** 
+                        by Elizabeth Zalman and Jerry Neumann - တို့ရဲ့ စွန့်စားစီးပွား ရင်းနှီးမြှုပ်နှံမှုဆိုင်ရာ စီမံခန့်ခွဲမှုလမ်းပြစာအုပ်ကို 
+                        "တည်ထောင်သူနဲ့ ရင်းနှီးမြှုပ်နှံသူ" အမည်နဲ့ မြန်မာဘာသာသို့ ဘာသာပြန်ဆိုပြီးစီးခဲ့ပါတယ်။ 
+                        အချိန်အများကြီး မယူလိုက်ရပေမဲ့၊ ဘာသာပြန်ဆိုခဲ့သမျှ စာအုပ်တွေထဲက စာမျက်နှာအများဆုံးဖြစ်သလို ရင်းနှီးကျွမ်းဝင်မှု အားနည်းတဲ့
+                        နယ်ပယ်ဖြစ်တာကြောင့် ဉာဏအား တော်တော်လေး စိုက်ထုတ်လိုက်ရတယ်။ 
+                    </div>
+                </div>
+                <div class="milestone-item">
+                    <div class="milestone-date">May 21, 2025</div>
+                    <div class="milestone-description">
+                        **သိရီဂဏပတိ** မဟာပိန္နဲအရှင်၏ မဟာဝင် စာအုပ် ဘာသာပြန်ဆိုမှု ပြီးစီးအောင်မြင်ခဲ့ပါတယ်။ အောင်မြင်မှု မှတ်ကျောက်တိုင်တခုပါပဲ။ 
+                        ပေါ့ပေါ့ပါးပါးပဲ ရေးဖို့ တွေးခဲ့ပေမဲ့၊ တကယ်လုပ်ဖြစ်တော့မှ တလက်စတည်း ပြည့်ပြည့်စုံစုံ လုပ်လိုက်ဖို့ရာ ဆုံးဖြတ်ဖြစ်သွားတယ်။ 
+                    </div>
+                </div>
+             <div class="milestone-item">
+                    <div class="milestone-date">May 16, 2025</div>
+                    <div class="milestone-description">
+                        **လျှောက်ရှာလျှောက်လုပ်** 
+                        မောရိသျှ ကလောင်ရဲ့ ပထမဆုံးသော ပင်ကိုယ်ရေးစာအုပ်ကို လုပ်ငန်းစတင်ပါတယ်။ 
+                        လိုအပ်တဲ့ ကုန်ကြမ်းအချက်အလက်တွေကို အချိန်တော်တော် ယူထားပြီးမှ လုပ်ဖို့ ဆုံးဖြတ်လိုက်တာပါ။
+                        ပေါ်ပင်စာပေလက်ရာမဖြစ်အောင် အထူးကြိုးစားသွားပြီး ရေးသားသွားဖို့ စိတ်ပိုင်းဖြတ်ထားပါတယ်။
+                        အချိန်ကောင်းရောက်မှ စာအုပ်အပ်သွားဖို့ စဉ်းစားထားပါတယ်။ 
+                </div>
+                </section>
         </div>
 
-        <!-- Skills Section -->
-        <div class="bg-white rounded-lg shadow-md p-6 md:p-8 lg:p-10 mb-6">
-            <h2 class="text-2xl md:text-3xl font-bold mb-4 text-center">My Skills</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-center">
-                <div class="bg-gray-50 p-4 rounded-md shadow-sm">
-                    <h3 class="font-semibold text-lg mb-1">Programming Languages</h3>
-                    <p>JavaScript, Python, Java, C++</p>
+        <div id="roadmap" class="tab-content">
+            <section>
+                <h3>Future Vision & Goals</h3>
+                <div class="roadmap-item">
+                    <div class="roadmap-date">Next 6-12 Months: Short-Term Goals</div>
+                    <div class="roadmap-description">
+                        <p>Focus on immediate professional development or project goals. E.g., "Mastering [new technology] for [specific application]."</p>
+                        <p>Or, "Contributing to open-source project [X] to enhance [skill]."</p>
+                    </div>
                 </div>
-                <div class="bg-gray-50 p-4 rounded-md shadow-sm">
-                    <h3 class="font-semibold text-lg mb-1">Frameworks & Libraries</h3>
-                    <p>React, Node.js, Django, Tailwind CSS</p>
+                <div class="roadmap-item">
+                    <div class="roadmap-date">Next 1-3 Years: Mid-Term Objectives</div>
+                    <div class="roadmap-description">
+                        <p>Outline larger career objectives. E.g., "Leading a significant development project from conception to deployment."</p>
+                        <p>Or, "Expanding expertise into [new domain] to take on more strategic roles."</p>
+                    </div>
                 </div>
-                <div class="bg-gray-50 p-4 rounded-md shadow-sm">
-                    <h3 class="font-semibold text-lg mb-1">Tools & Platforms</h3>
-                    <p>Git, GitHub, VS Code, Docker</p>
+                <div class="roadmap-item">
+                    <div class="roadmap-date">Long-Term Vision: 3-5+ Years</div>
+                    <div class="roadmap-description">
+                        <p>Share your aspirational career path. E.g., "Becoming a recognized expert in [field] and mentoring junior professionals."</p>
+                        <p>Or, "Driving innovation in [industry] through [specific approach]."</p>
+                    </div>
                 </div>
-                <div class="bg-gray-50 p-4 rounded-md shadow-sm">
-                    <h3 class="font-semibold text-lg mb-1">Design & Prototyping</h3>
-                    <p>Figma, Adobe XD, Sketch</p>
+                <h3>Future Vision & Goals</h3>
+                <div class="roadmap-item">
+                    <div class="roadmap-date">Next 6-12 Months: Short-Term Goals</div>
+                    <div class="roadmap-description">
+                        <p>Focus on immediate professional development or project goals. E.g., "Mastering [new technology] for [specific application]."</p>
+                        <p>Or, "Contributing to open-source project [X] to enhance [skill]."</p>
+                    </div>
                 </div>
-                <div class="bg-gray-50 p-4 rounded-md shadow-sm">
-                    <h3 class="font-semibold text-lg mb-1">Databases</h3>
-                    <p>MongoDB, PostgreSQL, MySQL</p>
+                <div class="roadmap-item">
+                    <div class="roadmap-date">Next 1-3 Years: Mid-Term Objectives</div>
+                    <div class="roadmap-description">
+                        <p>Outline larger career objectives. E.g., "Leading a significant development project from conception to deployment."</p>
+                        <p>Or, "Expanding expertise into [new domain] to take on more strategic roles."</p>
+                    </div>
                 </div>
-                <div class="bg-gray-50 p-4 rounded-md shadow-sm">
-                    <h3 class="font-semibold text-lg mb-1">Other</h3>
-                    <p>Agile Methodologies, Problem Solving, Teamwork</p>
+                <div class="roadmap-item">
+                    <div class="roadmap-date">Long-Term Vision: 3-5+ Years</div>
+                    <div class="roadmap-description">
+                        <p>Share your aspirational career path. E.g., "Becoming a recognized expert in [field] and mentoring junior professionals."</p>
+                        <p>Or, "Driving innovation in [industry] through [specific approach]."</p>
+                    </div>
                 </div>
-            </div>
+                </section>
         </div>
 
-        <!-- Call to Action / Social Links -->
-        <div class="bg-white rounded-lg shadow-md p-6 md:p-8 lg:p-10 text-center">
-            <h2 class="text-2xl md:text-3xl font-bold mb-4">Connect With Me</h2>
-            <p class="text-base mb-4">
-                Feel free to reach out if you have any questions or just want to connect!
-            </p>
-            <div class="flex justify-center space-x-4">
-                <a href="mailto:your.email@example.com" class="bg-black text-white px-6 py-3 rounded-md shadow-md hover:bg-gray-800 transition-colors duration-200 ease-in-out">Email Me</a>
-                <a href="https://linkedin.com/in/yourprofile" target="_blank" class="bg-gray-200 text-black px-6 py-3 rounded-md shadow-md hover:bg-gray-300 transition-colors duration-200 ease-in-out">LinkedIn</a>
-                <a href="https://github.com/yourusername" target="_blank" class="bg-gray-200 text-black px-6 py-3 rounded-md shadow-md hover:bg-gray-300 transition-colors duration-200 ease-in-out">GitHub</a>
-            </div>
-        </div>
-    </main>
+        <footer>
+            <p>&copy; 2025 Morisha. All rights reserved.</p>
+        </footer>
+    </div>
 
-    <!-- Footer -->
-    <footer class="bg-white p-4 text-center text-sm text-gray-600 border-t border-gray-100 mt-6">
-        &copy; 2025 [Your Name]. All rights reserved.
-    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Deactivate all buttons and content
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+
+                    // Activate clicked button and corresponding content
+                    button.classList.add('active');
+                    document.getElementById(button.dataset.tab).classList.add('active');
+                });
+            });
+        });
+    </script>
 </body>
 </html>
