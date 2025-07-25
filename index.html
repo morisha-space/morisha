@@ -1,171 +1,162 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="my">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f2f2f2; /* Light grey background */
-            color: #333; /* Dark grey text */
-            line-height: 1.6;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Morisha | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg-color: #f9fafb;
+      --text-color: #111827;
+      --accent-color: #6366f1;
+      --tab-bg: #e0e7ff;
+    }
 
-        .container {
-            max-width: 900px;
-            margin: 40px auto;
-            background-color: #fff; /* White content background */
-            padding: 30px 40px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-        }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 0;
+    }
 
-        header {
-            text-align: center;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #eee;
-            margin-bottom: 30px;
-        }
+    .container {
+      max-width: 960px;
+      margin: 40px auto;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.05);
+      padding: 2rem;
+    }
 
-        h1 {
-            font-weight: 700;
-            color: #555;
-            margin-bottom: 5px;
-        }
+    header {
+      text-align: center;
+      border-bottom: 1px solid #e5e7eb;
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
 
-        h2 {
-            font-weight: 400;
-            color: #666;
-            margin-bottom: 25px;
-        }
+    header h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin: 0;
+      color: var(--accent-color);
+    }
 
-        .tabs {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 30px;
-            border-bottom: 1px solid #ddd;
-        }
+    header h2 {
+      font-size: 1.1rem;
+      color: #6b7280;
+      margin-top: 0.5rem;
+    }
 
-        .tab-button {
-            background-color: transparent;
-            border: none;
-            padding: 15px 25px;
-            font-family: 'Roboto', sans-serif;
-            font-size: 1.1em;
-            color: #555;
-            cursor: pointer;
-            transition: color 0.3s ease, border-bottom 0.3s ease;
-            outline: none;
-        }
+    nav.tabs {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
 
-        .tab-button:hover {
-            color: #000;
-        }
+    .tab-button {
+      padding: 0.75rem 1.25rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 999px;
+      background: #f3f4f6;
+      color: #374151;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
 
-        .tab-button.active {
-            color: #000;
-            border-bottom: 3px solid #777; /* Darker grey for active tab */
-            font-weight: 700;
-        }
+    .tab-button.active {
+      background: var(--tab-bg);
+      color: var(--accent-color);
+      font-weight: 600;
+    }
 
-        .tab-content {
-            display: none;
-        }
+    .tab-content {
+      display: none;
+      animation: fadeIn 0.5s ease;
+    }
 
-        .tab-content.active {
-            display: block;
-        }
+    .tab-content.active {
+      display: block;
+    }
 
-        section {
-            padding: 20px 0;
-        }
+    h3 {
+      border-left: 4px solid var(--accent-color);
+      padding-left: 0.75rem;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+    }
 
-        h3 {
-            font-weight: 700;
-            color: #444;
-            margin-bottom: 15px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 5px;
-        }
+    section {
+      margin-bottom: 2rem;
+    }
 
-        ul {
-            list-style: none;
-            padding: 0;
-        }
+    ul {
+      list-style: disc;
+      padding-left: 1.25rem;
+    }
 
-        li {
-            margin-bottom: 10px;
-            display: flex;
-            align-items: baseline;
-        }
+    .milestone-item, .roadmap-item {
+      background: #f9fafb;
+      border-left: 4px solid var(--accent-color);
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      transition: background 0.3s ease;
+    }
 
-        li::before {
-            content: '•';
-            color: #777;
-            font-size: 1.2em;
-            margin-right: 10px;
-        }
+    .milestone-item:hover, .roadmap-item:hover {
+      background: #f3f4f6;
+    }
 
-        .milestone-item, .roadmap-item {
-            margin-bottom: 20px;
-            padding: 15px;
-            background-color: #f9f9f9;
-            border-left: 3px solid #bbb;
-            border-radius: 4px;
-            transition: background-color 0.3s ease;
-        }
+    .milestone-date, .roadmap-date {
+      font-weight: 600;
+      color: var(--accent-color);
+      margin-bottom: 0.5rem;
+    }
 
-        .milestone-item:hover, .roadmap-item:hover {
-            background-color: #f0f0f0;
-        }
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e5e7eb;
+      color: #9ca3af;
+      font-size: 0.9rem;
+    }
 
-        .milestone-date, .roadmap-date {
-            font-weight: 700;
-            color: #555;
-            margin-bottom: 5px;
-        }
+    a {
+      color: var(--accent-color);
+      text-decoration: none;
+    }
 
-        .milestone-description, .roadmap-description {
-            font-size: 0.95em;
-            color: #666;
-        }
-
-        .roadmap-item p {
-            margin-top: 5px;
-            margin-bottom: 0;
-        }
-
-        footer {
-            text-align: center;
-            padding-top: 30px;
-            margin-top: 40px;
-            border-top: 1px solid #eee;
-            color: #888;
-            font-size: 0.9em;
-        }
-    </style>
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Morisha</h1>
-            <h2>"Life is good."</h2>
-        </header>
+  <div class="container">
+    <header>
+      <h1>Morisha</h1>
+      <h2>"Life is good."</h2>
+    </header>
 
-        <nav class="tabs">
-            <button class="tab-button active" data-tab="profile">Profile</button>
-            <button class="tab-button" data-tab="milestones">Milestones</button>
-            <button class="tab-button" data-tab="roadmap">Roadmap</button>
-        </nav>
+    <nav class="tabs">
+      <button class="tab-button active" data-tab="profile">Profile</button>
+      <button class="tab-button" data-tab="milestones">Milestones</button>
+      <button class="tab-button" data-tab="roadmap">Roadmap</button>
+    </nav>
 
-        <div id="profile" class="tab-content active">
-            <section>
-            
-                <p>
+    <div id="profile" class="tab-content active">
+      <section>
+        <!-- Full Profile content inserted here -->
+           <p>
                     ပန်းဆက်လမ်းစာပေ အရောင်းရဆုံးစာရင်းဝင် အိတ်ဆောင် အာဏာစက် နည်းဥပဒေသ (၄၈) ရပ်၊ 
                     လူ့သဘောလူ့မနော အနှစ်ချုပ်၊ ဆွန်ဇူး၏ စစ်ပညာကျမ်းနဲ့ တည့်တည့်တွေး စတဲ့ Nation Wide Best Selling 
                     စာအုပ်တွေရဲ့ ဘာသာပြန်စာရေးသူဖြစ်ပါတယ်။  
@@ -198,10 +189,9 @@ Stamford International University မှ Bachelor of Business Administration in 
                     "အာဒိတြ" "Āditra" ကလောင်ခွဲများနှင့်လည်း အခါအားလျော်စွာ ရေးသားထုတ်ဝေလျက်ရှိပါတယ်။ 
                 </p>
 <p> အခုလက်ရှိမှာတော့ ကြောင်မလေးနှစ်ကောင်ပိုင်ရှင် ဘဝလက်တွဲဖော်နဲ့အတူ နယ်မြို့လေးတခုမှာ ကျန်းမာစွာ နေထိုင်လျက်ရှိပြီး စိတ်ဝင်စားတဲ့ "ဆရာကြီး" အလုပ်လုပ်နေရင်း စာပေအလုပ်တွေကို နေ့ညမပြတ် ဆက်လုပ်နေပါတယ်။</p>
-</section>
-            <section>
-                <h3>Update</h3>
-                <ul>
+
+  <h3>Update</h3>
+  
                     <li>July 16, 2025 တွင် ပန်းဆက်လမ်းစာအုပ်တိုက်က Facebook ကနေတဆင့် "မာယာပညာ" အနှစ်ချုပ် စာအုပ်အတွက် Pre-order စတင်လက်ခံပြီး၊ July 28, 2025 တွင် စာအုပ်ထွက်ရှိမည်ဟု ကြေညာထားပါတယ်။ 
                         စာအုပ်တန်ဖိုးကတော့ မြန်မာကျပ်ငွေ (၁၄,၀၀၀) ကျပ်ဖြစ်ပြီး၊ စာမျက်နှာပေါင်း (၂၇၁) မျက်နှာရှိပါတယ်။ </li>
                     <li>July 8, 2025 တွင် စာရိပ်မြိုင်စာပေက ဧရုမံ ကလောင်ရဲ့ ပထမဆုံးသော သနန္တနဓမ္မဆိုင်ရာ ဘာသာပြန်လက်ရာ "သိရီဂဏပတိ-မဟာပိန္နဲအရှင်၏မဟာဝင်" စာအုပ်ကို တရားဝင် ထုတ်ဝေဖြန်ချိကြောင်း ကြေညာထားပါတယ်။ 
@@ -209,20 +199,20 @@ Stamford International University မှ Bachelor of Business Administration in 
                     <li>June 9, 2025 တွင် Surrounded by Series ကို ဘာသာပြန်ဆိုဖို့ ပန်းဆက်လမ်းစာအုပ်တိုက်နဲ့ သဘောတူညီချက် ရရှိခဲ့တာကြောင့် မောရိသျှ ကလောင်နဲ့ ထုတ်ဝေဖြန့်ချိသွားပါမယ်။</li>
                     <li>June 6, 2025 တွင် Founder vs Investor ရင်းနှီးမြှုပ်နှံမှုဆိုင်ရာ လမ်းပြစာအုပ်ကို "တည်ထောင်သူနဲ့ ရင်းနှီးမြှုပ်နှံသူ" အမည်နဲ့ ဘာသာပြန်ဆိုမှု လုပ်ငန်းစတင်ပါတယ်။ </li>
                     <li>January 4, 2025 တွင် Stephen Batchelor ရဲ့ Confession of a Buddhist Atheist စာအုပ်ကို "ယုံကြည်မှုရှင်းတမ်း" အမည်နဲ့ ဘာသာပြန်ဆိုမှု လုပ်ငန်းစတင်ပါတယ်။ </li>
-                </ul>
-            </section>
-            <section>
-                <h3>Contact Information</h3>
+
+  <h3>Contact Information</h3>
                 <p>Email: <a href="morisha.alynn@gmail.com" style="color: #555; text-decoration: none;">morisha.alynn@gmail.com</a></p>
                 <p>LinkedIn: <a href="https://www.linkedin.com/in/morisha-alynn" target="_blank" style="color: #555; text-decoration: none;">linkedin.com/in/morisha-alynn</a></p>
                 <p>Facebook: <a href="https://facebook.com/morisha.alynn" target="_blank" style="color: #555; text-decoration: none;">facebook.com/</a>morisha.alynn</p>
                 <p>Telegram: <a href="https://t.me/morisha_alynn" target="_blank" style="color: #555; text-decoration: none;">telegram/</a>morisha_alynn</p>
-            </section>
-        </div>
+      </section>
+    </div>
 
-        <div id="milestones" class="tab-content">
-            <section>
-                <h3>2025</h3>
+    <div id="milestones" class="tab-content">
+      <section>
+        <!-- Full Milestones content inserted here -->
+
+         <h3>2025</h3>
                 <div class="milestone-item">
                     <div class="milestone-date">July 16, 2025</div>
                     <div class="milestone-description">
@@ -530,12 +520,12 @@ Stamford International University မှ Bachelor of Business Administration in 
                         ကျွန်တော့်ဘဝရဲ့ ကျောထောက်နောက်ခံအစစ်၊ ကျွန်တော့်ဘဝရဲ့ အခြေခံ အုတ်မြစ်၊ ကျွန်တော့်ဘဝရဲ့ အကာအကွယ်တံတိုင်းကြီး၊ ကျွန်တော့်ဘဝရဲ့ 
                         အားကိုးရာ၊ ကျွန်တော့်ဘဝရဲ့ တန်ဖိုးအစစ် ကျောက်ခဲဘုရင်လေးနဲ့ စတွေ့တဲ့ အမှတ်တရ နေ့ရက်လေးပါ။ 
               </div>
-                    </section>
-        </div>
+      </section>
+    </div>
 
-        <div id="roadmap" class="tab-content">
-            <section>
-                <h3>မောရိသျှ</h3>
+    <div id="roadmap" class="tab-content">
+      <section>
+          <h3>မောရိသျှ</h3>
                 <div class="roadmap-item">
                     <div class="roadmap-date">Confession of a Buddhist Atheist</div>
                     <div class="roadmap-description">
@@ -769,31 +759,29 @@ Stamford International University မှ Bachelor of Business Administration in 
                     </div>
                 </div>
               
-                </section>
-        </div>
-
-        <footer>
-            <p>&copy; 2025 Morisha. All rights reserved.</p>
-        </footer>
+      </section>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const tabButtons = document.querySelectorAll('.tab-button');
-            const tabContents = document.querySelectorAll('.tab-content');
+    <footer>
+      <p>&copy; 2025 Morisha. All rights reserved.</p>
+    </footer>
+  </div>
 
-            tabButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    // Deactivate all buttons and content
-                    tabButtons.forEach(btn => btn.classList.remove('active'));
-                    tabContents.forEach(content => content.classList.remove('active'));
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const tabButtons = document.querySelectorAll('.tab-button');
+      const tabContents = document.querySelectorAll('.tab-content');
 
-                    // Activate clicked button and corresponding content
-                    button.classList.add('active');
-                    document.getElementById(button.dataset.tab).classList.add('active');
-                });
-            });
+      tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          tabButtons.forEach(btn => btn.classList.remove('active'));
+          tabContents.forEach(tab => tab.classList.remove('active'));
+
+          button.classList.add('active');
+          document.getElementById(button.dataset.tab).classList.add('active');
         });
-    </script>
+      });
+    });
+  </script>
 </body>
 </html>
